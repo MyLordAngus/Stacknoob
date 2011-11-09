@@ -11,8 +11,20 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    core/grid.cpp \
+    core/pieces.cpp \
+    core/board.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    core/grid.h \
+    core/pieces.h \
+    core/board.h
 
 FORMS    += mainwindow.ui
+
+
+
+
+
+
