@@ -1,20 +1,25 @@
 #ifndef BOARDWIDGET_H
 #define BOARDWIDGET_H
 
+#include <vector>
 #include <QWidget>
 #include <QFrame>
 #include <QVBoxLayout>
 #include <QPainter>
-#include <QMessageBox>
+
+#include "core/cell.h"
+
+using namespace std;
 
 class BoardWidget : public QFrame
 {
     Q_OBJECT
 public:
     explicit BoardWidget(QFrame *parent = 0);
-    virtual void paintEvent(QPaintEvent *);
+    virtual void paintEvent(QPaintEvent* event);
 
 private:
+    vector<Cell> cells;
 
 signals:
 

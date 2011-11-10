@@ -10,9 +10,10 @@ BoardWidget::BoardWidget(QFrame *parent) :
 
     this->setLayout(layout);
 
-
 }
 
-void BoardWidget::paintEvent(QPaintEvent *event)
+void BoardWidget::paintEvent(QPaintEvent* event)
 {
+    QPainter painter(this);
+    QFrame::paintEvent(event);
 }
