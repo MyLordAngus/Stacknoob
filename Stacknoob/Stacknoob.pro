@@ -14,16 +14,28 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     core/player.cpp \
     core/grid.cpp \
-    core/pieces.cpp \
-    core/board.cpp
+    core/board.cpp \
+    core/cell.cpp \
+    core/piecefactory.cpp \
+    core/piece.cpp
 
 HEADERS  += mainwindow.h \
     core/player.h \
     core/grid.h \
-    core/pieces.h \
-    core/board.h
+    core/board.h \
+    core/cell.h \
+    core/piecefactory.h \
+    core/piece.h
 
 FORMS    += mainwindow.ui
+
+
+
+
+
+
+
+
 
 
 

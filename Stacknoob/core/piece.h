@@ -3,10 +3,10 @@
 
 #include "grid.h"
 
-class Pieces : public Grid
+class Piece : public Grid
 {
 public:
-    Pieces();
+    Piece();
 };
 
 #endif // PIECES_H
