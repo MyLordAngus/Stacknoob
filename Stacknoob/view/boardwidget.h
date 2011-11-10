@@ -19,7 +19,7 @@ public:
     virtual void paintEvent(QPaintEvent* event);
 
 private:
-    vector<Cell> cells;
+    vector<vector<Cell> > cells;
 
 signals:
 

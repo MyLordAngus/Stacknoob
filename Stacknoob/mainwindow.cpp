@@ -1,4 +1,5 @@
 #include <QHBoxLayout>
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "view/boardwidget.h"
