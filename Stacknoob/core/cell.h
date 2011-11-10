@@ -3,6 +3,9 @@
 
 class Cell
 {
+protected:
+    int color;
+    int is_blank;
 public:
     Cell();
 };
