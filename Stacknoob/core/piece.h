@@ -1,8 +1,7 @@
-#ifndef PIECES_H
-#define PIECES_H
+#ifndef PIECE_H
+#define PIECE_H
 
 #include <vector>
-
 #include "grid.h"
 
 using namespace std;
@@ -20,4 +19,4 @@ protected:
     int cur_position;
 };
 
-#endif // PIECES_H
+#endif // PIECE_H
