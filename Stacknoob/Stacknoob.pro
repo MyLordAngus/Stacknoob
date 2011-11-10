@@ -17,7 +17,9 @@ SOURCES += main.cpp\
     core/board.cpp \
     core/cell.cpp \
     core/piecefactory.cpp \
-    core/piece.cpp
+    core/piece.cpp \
+    core/workflow.cpp \
+    core/game.cpp
 
 HEADERS  += mainwindow.h \
     core/player.h \
@@ -25,20 +27,10 @@ HEADERS  += mainwindow.h \
     core/board.h \
     core/cell.h \
     core/piecefactory.h \
-    core/piece.h
+    core/piece.h \
+    core/workflow.h \
+    core/game.h
 
 FORMS    += mainwindow.ui
-
-
-
-
-
-
-
-
-
-
-
-
 
 
