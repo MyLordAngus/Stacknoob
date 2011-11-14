@@ -3,7 +3,6 @@
 #include "core/game.h"
 #include "core/player.h"
 #include "core/workflow.h"
-#include <iostream>
 
 int main(int argc, char *argv[])
 {
