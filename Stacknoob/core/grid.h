@@ -14,6 +14,7 @@ protected:
     vector< vector<Cell> > cells;
 public:
     Grid();
+    vector< vector<Cell> > getCells() { return this->cells; }
 };
 
 #endif // GRID_H
