@@ -12,7 +12,7 @@ void Player::setBoard(Board _board)
     this->board = _board;
 }
 
-Board Player::getBoard()
+Board& Player::getBoard()
 {
     return this->board;
 }
