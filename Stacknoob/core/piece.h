@@ -12,11 +12,11 @@ public:
     Piece();
     int getX() { return this->x; }
     int getY() { return this->y; }
+    Piece(vector<Grid> _positions, int _x = 4, int _y = 0, int _cur_position = 0);
 
 protected:
     int x;
     int y;
-    int color;
     vector<Grid> positions;
     int cur_position;
 };
