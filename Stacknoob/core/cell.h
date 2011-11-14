@@ -1,10 +1,11 @@
 #ifndef CELL_H
 #define CELL_H
 
+enum colorType {BLACK ,CYAN ,YELLOW ,MAGENTA ,ORANGE ,BLUE ,GREEN ,RED };
+
 class Cell
 {
 protected:
-    enum colorType {BLACK, RED , BLUE};
     colorType color;
     bool is_blank;
 
