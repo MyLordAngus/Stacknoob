@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     // Main Layout
     QHBoxLayout *layout = new QHBoxLayout();
     BoardWidget *board = new BoardWidget();
+    this->b_widget = board;
     layout->addWidget(board);
 
     this->centralWidget()->setLayout(layout);
