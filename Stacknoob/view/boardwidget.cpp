@@ -20,7 +20,8 @@ void BoardWidget::paintEvent(QPaintEvent* event)
         for(int j(0); j < this->cells.at(i).size(); ++j)
         {
             // Fill the rect if the cell is non empty
-            painter.fillRect(j * 10, i * 10, 10, 10, QColor(100 * j, i * 100, 100));
+            if(!this->cells.at(i).at(j).isEmpty())
+                painter.fillRect(j * 10, i * 10, 10, 10, QColor(100 * j, i * 100, 100));
         }
     }
 }
