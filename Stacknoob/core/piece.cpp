@@ -4,7 +4,7 @@ Piece::Piece()
 {
 }
 
-Piece::Piece(vector<Grid> _positions, int _x, int _y, int _cur_position)
+Piece::Piece(vector<Grid> & _positions, int _x, int _y, int _cur_position)
 {
     this->x = _x;
     this->y = _y;
