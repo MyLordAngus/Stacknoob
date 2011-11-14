@@ -3,3 +3,8 @@
 PieceFactory::PieceFactory()
 {
 }
+
+Piece* PieceFactory::initPiece()
+{
+    return new Piece();
+}
