@@ -2,6 +2,7 @@
 #define GRID_H
 
 #include <vector>
+
 #include "cell.h"
 
 using namespace std;
@@ -15,8 +16,8 @@ protected:
 
 public:
     Grid();
-    vector< vector<Cell> > getCells() { return this->cells; };
-    void setCells(vector< vector<Cell> > _cells) { this->cells = _cells; };
+    vector< vector<Cell> >& getCells() { return this->cells; }
+    void setCells(vector< vector<Cell> >& c) { this->cells = c; }
     Grid(int _width,int _height);
 };
 

@@ -13,10 +13,12 @@ protected:
 
 public:
     Workflow();
-    Workflow(Player *player);
+    Workflow(Player*);
     void createPiece();
     void setBWidget(BoardWidget* w) { this->b_widget = w; }
-    void updateView();
+
+    /// Repaint the board widget
+    void updateBoardView();
 };
 
 #endif // WORKFLOW_H

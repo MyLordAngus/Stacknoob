@@ -7,26 +7,25 @@ Board::Board()
     this->cells = vector< vector<Cell> >(this->height, vector<Cell>(this->width,Cell()));
 }
 
-void Board::setPiece(Piece *_piece)
-{
-    this->piece = _piece;
-}
-
 vector< vector<Cell> > Board::mergePieceInBoard()
 {
     int x = this->piece->getX();
     int y = this->piece->getY();
+    int coordX = 0, coordY = 0;
 
     vector<vector<Cell> > v = this->getCells();
+    vector<vector<Cell> > vp = this->piece->getGrid().getCells();
 
-    for(int i = 0; i < this->piece->getCells().size(); i++)
+    for(unsigned int i = 0; i < vp.size(); i++)
     {
-        for(int j = 0; j < this->piece->getCells().at(i).size(); j++)
+        for(unsigned int j = 0; j < vp.at(i).size(); j++)
         {
-            if(!this->piece->getCells().at(i).at(j).isEmpty())
+            if(!vp.at(i).at(j).isEmpty())
             {
-                if(i >= 0 && i < this->width && j >= 0 && j < this->height)
-                    v.at(i + x - 2).at(j + y - 1).setIsBlank(false);
+                coordX = i + y -2;
+                coordY = j + x - 1;
+                if(coordX >= 0 && coordX < this->width && coordY >= 0 && coordY < this->height)
+                    v[coordX][coordY].setIsBlank(false);
             }
         }
     }

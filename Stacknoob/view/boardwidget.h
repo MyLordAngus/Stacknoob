@@ -8,7 +8,6 @@
 #include <QPainter>
 
 #include "core/cell.h"
-#include "core/piece.h"
 
 using namespace std;
 
@@ -18,11 +17,11 @@ class BoardWidget : public QFrame
 public:
     explicit BoardWidget(QFrame *parent = 0);
     virtual void paintEvent(QPaintEvent* event);
-    void setPaintableBoard(vector<vector<Cell> > c) { this->cells = c; };
+    void setPaintableBoard(vector<vector<Cell> >& c){ this->cells = c; }
 
 private:
+    /// The vector of cells to be printed in the view
     vector<vector<Cell> > cells;
-    Piece* piece;
 
 signals:
 

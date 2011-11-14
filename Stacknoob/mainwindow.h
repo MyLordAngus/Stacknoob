@@ -16,9 +16,12 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    BoardWidget* getBWidget() { return this->b_widget; }
 
 private:
     Ui::MainWindow *ui;
+
+    /// The graphical board
     BoardWidget* b_widget;
 };
 

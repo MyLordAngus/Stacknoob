@@ -14,7 +14,9 @@ int main(int argc, char *argv[])
     Game game(&player);
 
     Workflow work(&player);
+    work.setBWidget(w.getBWidget());
     work.createPiece();
+    work.updateBoardView();
 
     return a.exec();
 }

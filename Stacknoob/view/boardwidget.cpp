@@ -9,19 +9,20 @@ BoardWidget::BoardWidget(QFrame *parent) :
     this->setLineWidth(2);
 
     this->setLayout(layout);
+    this->cells = vector< vector<Cell> >(20, vector<Cell>(10, Cell()));
 }
 
-void BoardWidget::paintEvent(QPaintEvent* event)
+void BoardWidget::paintEvent(QPaintEvent*)
 {
     QPainter painter(this);
 
-    for(int i(0); i < this->cells.size(); ++i)
+    for(unsigned int i(0); i < this->cells.size(); ++i)
     {
-        for(int j(0); j < this->cells.at(i).size(); ++j)
+        for(unsigned int j(0); j < this->cells.at(i).size(); ++j)
         {
             // Fill the rect if the cell is non empty
-            if(!this->cells.at(i).at(j).isEmpty())
-                painter.fillRect(j * 10, i * 10, 10, 10, QColor(100 * j, i * 100, 100));
+            if(this->cells.at(i).at(j).isEmpty())
+                painter.fillRect(j * 10, i * 10, 10, 10, QColor(100, 100, 100));
         }
     }
 }

@@ -8,7 +8,10 @@ class Board : public Grid
 {
 public:
     Board();
-    void setPiece(Piece *piece);
+    void setPiece(Piece* p) { this->piece = p; }
+
+    /// Place the piece in a copy of grid with the right coordonate
+    /// to give it to the view
     vector< vector<Cell> > mergePieceInBoard();
 
 protected:
