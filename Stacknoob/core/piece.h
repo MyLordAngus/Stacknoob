@@ -10,6 +10,8 @@ class Piece : public Grid
 {
 public:
     Piece();
+    int getX() { return this->x; }
+    int getY() { return this->y; }
 
 protected:
     int x;
