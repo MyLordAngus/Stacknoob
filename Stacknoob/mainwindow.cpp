@@ -1,6 +1,8 @@
+#include <QHBoxLayout>
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QHBoxLayout>
+#include "view/boardwidget.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -10,6 +12,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // Main Layout
     QHBoxLayout *layout = new QHBoxLayout();
+    BoardWidget *board = new BoardWidget();
+    layout->addWidget(board);
+
     this->centralWidget()->setLayout(layout);
 }
 
