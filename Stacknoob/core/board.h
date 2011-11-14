@@ -8,9 +8,10 @@ class Board : public Grid
 {
 public:
     Board();
+    void setPiece(Piece *piece);
 
 protected:
-    Piece piece;
+    Piece *piece;
 };
 
 #endif // BOARD_H

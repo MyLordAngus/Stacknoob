@@ -9,10 +9,11 @@ using namespace std;
 class Game
 {
 protected:
-    vector<Player> players;
+    vector<Player*> players;
 
 public:
-    Game();
+    Game(Player *_player);
+    void initBoard(Player *_player);
 };
 
 #endif // GAME_H
