@@ -13,7 +13,9 @@ protected:
     int score;
     Board board;
 public:
-    Player();
+    Player(string _name,int _score);
+    void setBoard(Board _board);
+    Board getBoard();
 };
 
 #endif // PLAYER_H
