@@ -9,6 +9,7 @@ class Board : public Grid
 public:
     Board();
     void setPiece(Piece *piece);
+    vector< vector<Cell> > mergePieceInBoard();
 
 protected:
     Piece *piece;

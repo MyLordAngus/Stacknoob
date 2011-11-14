@@ -16,6 +16,7 @@ public:
     Workflow(Player *player);
     void createPiece();
     void setBWidget(BoardWidget* w) { this->b_widget = w; }
+    void updateView();
 };
 
 #endif // WORKFLOW_H
