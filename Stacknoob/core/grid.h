@@ -11,7 +11,7 @@ class Grid
 protected:
     int width;
     int height;
-    vector<Cell> cells;
+    vector< vector<Cell> > cells;
 public:
     Grid();
 };
