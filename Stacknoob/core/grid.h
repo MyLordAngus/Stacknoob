@@ -16,10 +16,10 @@ protected:
 
 public:
     Grid();
+    Grid(int, int);
     Grid(vector< vector<Cell> >&);
     vector< vector<Cell> >& getCells() { return this->cells; }
     void setCells(vector< vector<Cell> >& c) { this->cells = c; }
-    Grid(int _width,int _height);
 };
 
 #endif // GRID_H

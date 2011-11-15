@@ -2,19 +2,13 @@
 
 Grid::Grid()
 {
-
 }
 
-Grid::Grid(vector< vector<Cell> >& c)
+Grid::Grid(vector< vector<Cell> >& c) : cells(c), height(c.size()), width(c[0].size())
 {
-    this->height = 4;
-    this->width = 4;
-    this->cells = c;
 }
 
-Grid::Grid(int _width, int _height)
+Grid::Grid(int w, int h) : height(h), width(w)
 {
-    this->height = _height;
-    this->width = _width;
     this->cells = vector< vector<Cell> >(this->height, vector<Cell>(this->width,Cell()));
 }
