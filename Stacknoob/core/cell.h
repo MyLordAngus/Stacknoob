@@ -12,8 +12,9 @@ protected:
 public:
     Cell();
     Cell(colorType _color, bool _blank);
-    bool isEmpty();
+    bool isBlank();
     void setIsBlank(bool b) { this->is_blank = b; }
+    void setColor(colorType _color) { this->color = _color; }
 };
 
 #endif // CELL_H

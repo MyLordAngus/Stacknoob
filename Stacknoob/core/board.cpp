@@ -20,7 +20,7 @@ vector< vector<Cell> > Board::mergePieceInBoard()
     {
         for(unsigned int j = 0; j < vp.at(i).size(); j++)
         {
-            if(!vp.at(i).at(j).isEmpty())
+            if(!vp.at(i).at(j).isBlank())
             {
                 coordX = i + y -2;
                 coordY = j + x - 1;

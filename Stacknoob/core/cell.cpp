@@ -12,7 +12,7 @@ Cell::Cell(colorType _color, bool _blank = false)
     is_blank = _blank;
 }
 
-bool Cell::isEmpty()
+bool Cell::isBlank()
 {
     if(this->is_blank)
     {
