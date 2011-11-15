@@ -26,3 +26,14 @@ void BoardWidget::paintEvent(QPaintEvent*)
         }
     }
 }
+
+void BoardWidget::connectWorkflow(Workflow* w)
+{
+    connect(w, SIGNAL(paintBoard(vector<vector<Cell> >)), this, SLOT(paintBoard(vector<vector<Cell> >)));
+}
+
+void BoardWidget::paintBoard(vector<vector<Cell> > c)
+{
+    this->cells = c;
+    this->repaint();
+}

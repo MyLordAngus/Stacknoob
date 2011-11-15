@@ -2,7 +2,9 @@
 #define PLAYER_H
 
 #include <string>
+
 #include "board.h"
+#include "workflow.h"
 
 using namespace std;
 
@@ -12,10 +14,13 @@ protected:
     string name;
     int score;
     Board board;
+    Workflow workflow;
+
 public:
     Player(string _name,int _score);
     void setBoard(Board _board);
     Board& getBoard();
+    Workflow& getWorkflow() { return this->workflow; }
 };
 
 #endif // PLAYER_H

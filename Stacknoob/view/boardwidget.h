@@ -8,24 +8,27 @@
 #include <QPainter>
 
 #include "core/cell.h"
+#include "core/workflow.h"
 
 using namespace std;
 
 class BoardWidget : public QFrame
 {
     Q_OBJECT
+
 public:
     explicit BoardWidget(QFrame *parent = 0);
-    virtual void paintEvent(QPaintEvent* event);
-    void setPaintableBoard(vector<vector<Cell> >& c){ this->cells = c; }
+    void connectWorkflow(Workflow* w);
+
+public slots:
+    void paintBoard(vector<vector<Cell> >);
 
 private:
     /// The vector of cells to be printed in the view
     vector<vector<Cell> > cells;
+    virtual void paintEvent(QPaintEvent* event);
 
 signals:
-
-public slots:
 
 };
 

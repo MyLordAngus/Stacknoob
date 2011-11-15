@@ -1,5 +1,4 @@
 #include "player.h"
-#include <string>
 
 Player::Player(string _name,int _score)
 {

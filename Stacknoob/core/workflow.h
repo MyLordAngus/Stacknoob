@@ -1,24 +1,24 @@
 #ifndef WORKFLOW_H
 #define WORKFLOW_H
 
-#include "piecefactory.h"
-#include "player.h"
-#include "view/boardwidget.h"
+#include <QObject>
 
-class Workflow
+#include "piecefactory.h"
+#include "board.h"
+
+class Workflow : public QObject
 {
-protected:
-    Player *player;
-    BoardWidget* b_widget;
+    Q_OBJECT
 
 public:
     Workflow();
-    Workflow(Player*);
-    void createPiece();
-    void setBWidget(BoardWidget* w) { this->b_widget = w; }
+    void createPiece(Board & b);
 
     /// Repaint the board widget
-    void updateBoardView();
+    void updateBoardView(Board & b);
+
+signals:
+    void paintBoard(vector<vector<Cell> >);
 };
 
 #endif // WORKFLOW_H

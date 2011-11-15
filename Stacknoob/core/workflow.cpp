@@ -1,24 +1,18 @@
 #include "workflow.h"
 
-Workflow::Workflow()
+Workflow::Workflow() : QObject()
 {
 }
 
-Workflow::Workflow(Player *_player)
+void Workflow::createPiece(Board & b)
 {
-    this->player = _player;
+    b.setPiece(PieceFactory::initPiece());
+    this->updateBoardView(b);
 }
 
-void Workflow::createPiece()
+void Workflow::updateBoardView(Board & b)
 {
-    this->player->getBoard().setPiece(PieceFactory::initPiece());
+    vector<vector<Cell> > v = b.mergePieceInBoard();
+
+    emit paintBoard(v);
 }
-
-void Workflow::updateBoardView()
-{
-    vector<vector<Cell> > v = this->player->getBoard().mergePieceInBoard();
-
-    this->b_widget->setPaintableBoard(v);
-    this->b_widget->repaint();
-}
-
