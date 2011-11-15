@@ -20,12 +20,12 @@ void BoardWidget::paintEvent(QPaintEvent*)
         for(unsigned int j(0); j < this->cells[i].size(); ++j)
         {
             // Fill the rect if the cell is non empty
-            if(this->cells.at(i).at(j).isBlank())
+            if(this->cells[i][j].isBlank())
                 painter.fillRect(j * SQUARE_WIDTH,
                                  i * SQUARE_HEIGHT,
                                  SQUARE_WIDTH,
                                  SQUARE_HEIGHT,
-                                 QColor(100, 100, 100));
+                                 this->cells[i][j].getQColor());
 
             // Vertical line
             painter.drawLine(QLineF(j * 10, 0.0, j * 10, HEIGHT * SQUARE_HEIGHT));
