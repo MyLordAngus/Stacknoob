@@ -3,9 +3,11 @@
 BoardWidget::BoardWidget(QFrame *parent) :
     QFrame(parent)
 {
-    QVBoxLayout* layout = new QVBoxLayout();
+    this->setFocusPolicy(Qt::StrongFocus);  // Respond to keyboard event
 
+    QVBoxLayout* layout = new QVBoxLayout();
     this->setLayout(layout);
+
     this->cells = vector< vector<Cell> >(HEIGHT, vector<Cell>(WIDTH, Cell()));
 }
 
@@ -40,6 +42,7 @@ void BoardWidget::paintEvent(QPaintEvent*)
 
 void BoardWidget::connectWorkflow(Workflow* w)
 {
+    this->workflow = w;
     connect(w, SIGNAL(paintBoard(vector<vector<Cell> >)), this, SLOT(paintBoard(vector<vector<Cell> >)));
 }
 
@@ -47,4 +50,16 @@ void BoardWidget::paintBoard(vector<vector<Cell> > c)
 {
     this->cells = c;
     this->repaint();
+}
+
+void BoardWidget::keyPressEvent(QKeyEvent* event)
+{
+    switch(event->key())
+    {
+    case Qt::Key_Down:
+            this->workflow->move(DOWN);
+    default:
+        QFrame::keyPressEvent(event);
+    }
+    event->accept();
 }

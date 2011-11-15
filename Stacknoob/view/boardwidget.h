@@ -6,6 +6,7 @@
 #include <QFrame>
 #include <QVBoxLayout>
 #include <QPainter>
+#include <QKeyEvent>
 
 #include "core/cell.h"
 #include "core/workflow.h"
@@ -24,9 +25,11 @@ public slots:
     void paintBoard(vector<vector<Cell> >);
 
 private:
+    Workflow* workflow;
     /// The vector of cells to be printed in the view
     vector<vector<Cell> > cells;
-    virtual void paintEvent(QPaintEvent* event);
+    void paintEvent(QPaintEvent* event);
+    void keyPressEvent(QKeyEvent *);
 
 signals:
 
