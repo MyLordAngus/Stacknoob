@@ -16,7 +16,6 @@ int main(int argc, char *argv[])
 
     game.launchGame();
 
-    wf->move(DOWN);
     w.show();
 
     return a.exec();
