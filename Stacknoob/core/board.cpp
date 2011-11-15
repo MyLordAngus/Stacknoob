@@ -24,7 +24,7 @@ vector< vector<Cell> > Board::mergePieceInBoard()
             {
                 coordX = i + y - 3;
                 coordY = j + x - 1;
-                if(coordX >= 0 && coordX < this->width && coordY >= 0 && coordY < this->height)
+                if(coordX >= 0 && coordX < this->height && coordY >= 0 && coordY < this->width)
                     v[coordX][coordY].setIsBlank(false);
             }
         }
@@ -32,4 +32,36 @@ vector< vector<Cell> > Board::mergePieceInBoard()
 
     return v;
 }
+
+bool Board::move(directionType _direction)
+{
+    int x = this->piece->getX();
+    int y = this->piece->getY();
+
+    switch (_direction)
+    {
+        case DOWN:
+        {
+            y = y + 1;
+            if(y < HEIGHT){
+                this->piece->setY(y);
+                return true;
+            }
+            return false;
+        }
+        case LEFT:
+        {
+            x = x - 1;
+            this->piece->setX(x);
+            break;
+        }
+        case RIGHT:
+        {
+            x = x + 1;
+            this->piece->setX(x);
+            break;
+        }
+    }
+}
+
 

@@ -9,15 +9,23 @@ Workflow::Workflow(Player* p) : QObject()
     this->player = p;
 }
 
-void Workflow::createPiece(Board & b)
+void Workflow::createPiece()
 {
-    b.setPiece(PieceFactory::initPiece());
-    this->updateBoardView(b);
+    this->player->getBoard().setPiece(PieceFactory::initPiece());
+    this->updateBoardView();
 }
 
-void Workflow::updateBoardView(Board & b)
+void Workflow::updateBoardView()
 {
-    vector<vector<Cell> > v = b.mergePieceInBoard();
+    vector<vector<Cell> > v = this->player->getBoard().mergePieceInBoard();
 
     emit paintBoard(v);
+}
+
+void Workflow::move(directionType _directionType)
+{
+    if(this->player->getBoard().move(_directionType))
+    {
+        this->updateBoardView();
+    }
 }

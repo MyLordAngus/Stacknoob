@@ -14,10 +14,11 @@ class Workflow : public QObject
 public:
     Workflow();
     Workflow(Player*);
-    void createPiece(Board & b);
+    void createPiece();
 
     /// Repaint the board widget
-    void updateBoardView(Board & b);
+    void updateBoardView();
+    void move(directionType _direction);
 
 protected:
     Player* player;
