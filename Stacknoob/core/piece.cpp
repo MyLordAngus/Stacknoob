@@ -4,13 +4,9 @@ Piece::Piece()
 {
 }
 
-Piece::Piece(vector<Grid> & _positions,pieceType _name, int _x, int _y, int _cur_position) : Grid(_positions[_cur_position])
+Piece::Piece(vector<Grid> & p, pieceType n, int _x, int _y, int cur_pos) :
+    Grid(p[cur_pos]), x(_x), y(_y), positions(p), cur_position(cur_pos), name(n)
 {
-    this->x = _x;
-    this->y = _y;
-    this->positions = _positions;
-    this->cur_position = _cur_position;
-    this->name = _name;
 }
 
 Grid& Piece::getGrid()
