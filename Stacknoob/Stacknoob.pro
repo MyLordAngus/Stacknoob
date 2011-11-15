@@ -31,9 +31,11 @@ HEADERS  += mainwindow.h \
     core/piece.h \
     core/workflow.h \
     core/game.h \
-    view/boardwidget.h
+    view/boardwidget.h \
+    constants.h
 
 FORMS    += mainwindow.ui
+
 
 
 

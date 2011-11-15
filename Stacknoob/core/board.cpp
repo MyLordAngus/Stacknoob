@@ -2,8 +2,8 @@
 
 Board::Board()
 {
-    this->width = 10;
-    this->height = 20;
+    this->width = WIDTH;
+    this->height = HEIGHT;
     this->cells = vector< vector<Cell> >(this->height, vector<Cell>(this->width,Cell()));
 }
 

@@ -3,6 +3,7 @@
 
 #include "grid.h"
 #include "piece.h"
+#include "constants.h"
 
 class Board : public Grid
 {
