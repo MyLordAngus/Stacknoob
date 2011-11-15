@@ -22,7 +22,7 @@ vector< vector<Cell> > Board::mergePieceInBoard()
         {
             if(!vp.at(i).at(j).isBlank())
             {
-                coordX = i + y -2;
+                coordX = i + y - 3;
                 coordY = j + x - 1;
                 if(coordX >= 0 && coordX < this->width && coordY >= 0 && coordY < this->height)
                     v[coordX][coordY].setIsBlank(false);
