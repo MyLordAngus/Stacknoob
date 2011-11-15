@@ -5,15 +5,8 @@ BoardWidget::BoardWidget(QFrame *parent) :
 {
     QVBoxLayout* layout = new QVBoxLayout();
 
-    //this->setFrameStyle(QFrame::Panel | QFrame::Raised);
-    //this->setLineWidth(2);
-
     this->setLayout(layout);
-<<<<<<< HEAD
-    this->cells = vector< vector<Cell> >(20, vector<Cell>(10, Cell()));
-=======
     this->cells = vector< vector<Cell> >(HEIGHT, vector<Cell>(WIDTH, Cell()));
->>>>>>> dev_view
 }
 
 void BoardWidget::paintEvent(QPaintEvent*)
@@ -43,17 +36,6 @@ void BoardWidget::paintEvent(QPaintEvent*)
     painter.drawLine(QLineF(this->cells[0].size() * 10, 0.0, this->cells[0].size() * 10, HEIGHT * SQUARE_HEIGHT));
     // Last horizontal line
     painter.drawLine(QLineF(0.0, this->cells.size() * 10, WIDTH * SQUARE_WIDTH, this->cells.size() * 10));
-}
-
-void BoardWidget::connectWorkflow(Workflow* w)
-{
-    connect(w, SIGNAL(paintBoard(vector<vector<Cell> >)), this, SLOT(paintBoard(vector<vector<Cell> >)));
-}
-
-void BoardWidget::paintBoard(vector<vector<Cell> > c)
-{
-    this->cells = c;
-    this->repaint();
 }
 
 void BoardWidget::connectWorkflow(Workflow* w)
