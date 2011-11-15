@@ -27,5 +27,16 @@ void Workflow::move(directionType _directionType)
     if(this->player->getBoard().move(_directionType))
     {
         this->updateBoardView();
+    }else
+    {
+        if(_directionType == DOWN){
+            fixPieceInBoard();
+            this->createPiece();
+        }
     }
+}
+
+void Workflow::fixPieceInBoard()
+{
+    this->player->getBoard().setCells(this->player->getBoard().mergePieceInBoard());
 }

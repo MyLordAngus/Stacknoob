@@ -42,8 +42,9 @@ bool Board::move(directionType _direction)
     {
         case DOWN:
         {
-            y = y + 1;
-            if(y < HEIGHT){
+            y++;
+            if(y < HEIGHT)
+            {
                 this->piece->setY(y);
                 return true;
             }
@@ -51,15 +52,23 @@ bool Board::move(directionType _direction)
         }
         case LEFT:
         {
-            x = x - 1;
-            this->piece->setX(x);
-            break;
+            x--;
+            if(x >= 0)
+            {
+                this->piece->setX(x);
+                return true;
+            }
+            return false;
         }
         case RIGHT:
         {
-            x = x + 1;
-            this->piece->setX(x);
-            break;
+            x++;
+            if(x < WIDTH - this->piece->maxRange('X'))
+            {
+                this->piece->setX(x);
+                return true;
+            }
+            return false;
         }
     }
 }
