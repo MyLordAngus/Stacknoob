@@ -1,7 +1,9 @@
 #ifndef CELL_H
 #define CELL_H
 
-enum colorType {BLACK ,CYAN ,YELLOW ,MAGENTA ,ORANGE ,BLUE ,GREEN ,RED };
+#include <QColor>
+
+enum colorType {BLACK, CYAN ,YELLOW ,MAGENTA ,ORANGE ,BLUE ,GREEN ,RED };
 
 class Cell
 {
@@ -15,6 +17,7 @@ public:
     bool isBlank();
     void setIsBlank(bool b) { this->is_blank = b; }
     void setColor(colorType _color) { this->color = _color; }
+    QColor getQColor();
 };
 
 #endif // CELL_H
