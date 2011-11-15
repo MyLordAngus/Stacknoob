@@ -10,7 +10,9 @@ int main(int argc, char *argv[])
     MainWindow w;
 
     Game game;
-    w.getBWidget()->connectWorkflow(&(game.getPlayer(0)->getWorkflow()));
+
+    Workflow* wf = game.getWorkflow();
+    w.getBWidget()->connectWorkflow(wf);
 
     game.launchGame();
 

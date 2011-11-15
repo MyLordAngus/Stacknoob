@@ -8,13 +8,19 @@ Game::Game()
     players.push_back(p);
 }
 
-void Game::initBoard(Player *_player)
+void Game::initBoard(Player* p)
 {
-    _player->setBoard(Board());
+    this->workflow = new Workflow(p);
+    p->setBoard(Board());
+}
+
+Workflow* Game::getWorkflow()
+{
+    return this->workflow;
 }
 
 void Game::launchGame()
 {
-    for(unsigned int i = 0; i < this->players.size(); i++)
-        this->players[i]->getWorkflow().createPiece(this->players[0]->getBoard());
+    //for(unsigned int i = 0; i < this->players.size(); i++)
+    this->workflow->createPiece(this->players[0]->getBoard());
 }

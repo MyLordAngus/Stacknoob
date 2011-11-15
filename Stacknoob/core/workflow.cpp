@@ -4,6 +4,11 @@ Workflow::Workflow() : QObject()
 {
 }
 
+Workflow::Workflow(Player* p) : QObject()
+{
+    this->player = p;
+}
+
 void Workflow::createPiece(Board & b)
 {
     b.setPiece(PieceFactory::initPiece());
