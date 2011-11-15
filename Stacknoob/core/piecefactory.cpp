@@ -13,6 +13,7 @@ Piece* PieceFactory::initPiece()
     srand( time(NULL) );
     int x = rand() % 7 + 1;
 
+    pieceType pName;
     vector<Grid> positions;
     vector< vector<Cell> > pos;
     Cell cell;
@@ -23,6 +24,7 @@ Piece* PieceFactory::initPiece()
         case 1:
         {
             //O-Tetrimino
+            pName = O;
             cell.setColor(YELLOW);
 
             Grid oPos1 = Grid(4,4);
@@ -39,6 +41,7 @@ Piece* PieceFactory::initPiece()
         case 2:
         {
             //I-Tetrimino
+            pName = I;
             cell.setColor(CYAN);
 
             Grid iPos1 = Grid(4,4);
@@ -64,6 +67,7 @@ Piece* PieceFactory::initPiece()
         case 3:
         {
             //S-Tetrimino
+            pName = S;
             cell.setColor(GREEN);
 
             Grid sPos1 = Grid(4,4);
@@ -89,6 +93,7 @@ Piece* PieceFactory::initPiece()
         case 4:
         {
             //Z-Tetrimino
+            pName = Z;
             cell.setColor(RED);
 
             Grid zPos1 = Grid(4,4);
@@ -114,6 +119,7 @@ Piece* PieceFactory::initPiece()
         case 5:
         {
             //L-Tetrimino
+            pName = L;
             cell.setColor(ORANGE);
 
             Grid lPos1 = Grid(4,4);
@@ -157,6 +163,7 @@ Piece* PieceFactory::initPiece()
         case 6:
         {
             //J-Tetrimino
+            pName = J;
             cell.setColor(BLUE);
 
             Grid jPos1 = Grid(4,4);
@@ -200,6 +207,7 @@ Piece* PieceFactory::initPiece()
         case 7:
         {
             //T-Tetrimino
+            pName = T;
             cell.setColor(MAGENTA);
 
             Grid tPos1 = Grid(4,4);
@@ -242,5 +250,5 @@ Piece* PieceFactory::initPiece()
         }
     }
 
-    return new Piece(positions);
+    return new Piece(positions,pName);
 }
