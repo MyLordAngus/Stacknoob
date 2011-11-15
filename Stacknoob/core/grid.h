@@ -18,7 +18,7 @@ public:
     Grid();
     Grid(vector< vector<Cell> >&);
     vector< vector<Cell> >& getCells() { return this->cells; }
-    void setCells(vector< vector<Cell> >& c) { this->cells = c; }
+    void setCells(vector< vector<Cell> > c) { this->cells = c; }
     Grid(int _width,int _height);
 };
 
