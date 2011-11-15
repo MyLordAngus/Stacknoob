@@ -18,14 +18,14 @@ vector< vector<Cell> > Board::mergePieceInBoard()
 
     for(unsigned int i = 0; i < vp.size(); i++)
     {
-        for(unsigned int j = 0; j < vp.at(i).size(); j++)
+        for(unsigned int j = 0; j < vp[i].size(); j++)
         {
-            if(!vp.at(i).at(j).isBlank())
+            if(!vp[i][j].isBlank())
             {
-                coordX = i + y - 3;
-                coordY = j + x - 1;
-                if(coordX >= 0 && coordX < this->height && coordY >= 0 && coordY < this->width)
-                    v[coordX][coordY].setIsBlank(false);
+                coordX = j + x;
+                coordY = i + y - 3;
+                if(coordX >= 0 && coordX < this->width && coordY >= 0 && coordY < this->height)
+                    v[coordY][coordX].setIsBlank(false);
             }
         }
     }
