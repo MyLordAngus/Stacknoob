@@ -16,7 +16,8 @@ Grid& Piece::getGrid()
 
 int Piece::maxRange(char position)
 {
-    int maxX = 0;
+    int maxX = 0, maxY = 0;
+
     for(unsigned int y = 0; y < this->cells.size(); y++)
     {
         for(unsigned int x = 0; x < this->cells[y].size(); x++)
@@ -27,9 +28,14 @@ int Piece::maxRange(char position)
                 {
                     maxX = x;
                 }
+
+                if(y > maxY)
+                {
+                    maxY = y;
+                }
             }
         }
     }
 
-    return maxX;
+    return (position == 'Y') ? maxY : maxX;
 }
