@@ -22,5 +22,5 @@ Workflow* Game::getWorkflow()
 void Game::launchGame()
 {
     //for(unsigned int i = 0; i < this->players.size(); i++)
-    this->workflow->createPiece(this->players[0]->getBoard());
+    this->workflow->createPiece();
 }
