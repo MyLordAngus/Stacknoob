@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QVBoxLayout>
 #include <QLabel>
+#include <QLCDNumber>
 
 class PanelWidget : public QWidget
 {
@@ -13,7 +14,7 @@ public:
 
 private:
     QVBoxLayout layout;
-    QLabel* score;
+    QLCDNumber* score;
     QLabel* nextPiece;
 
 signals:
