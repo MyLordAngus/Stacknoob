@@ -3,7 +3,9 @@
 PanelWidget::PanelWidget(QWidget *parent) :
     QWidget(parent)
 {
-    QLCDNumber* score = new QLCDNumber;
+    this->score = new QLCDNumber;
+    this->score->setDigitCount(4);
+
     this->layout.addWidget(score);
 
     this->setLayout(&layout);
@@ -12,4 +14,11 @@ PanelWidget::PanelWidget(QWidget *parent) :
 void PanelWidget::connectWorkflow(Workflow* w)
 {
     this->workflow = w;
+    connect(w, SIGNAL(updateScore(int)), this, SLOT(updateScore(int)));
+}
+
+
+void PanelWidget::updateScore(int s)
+{
+    score->display(s + score->value());
 }

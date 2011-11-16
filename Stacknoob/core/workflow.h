@@ -27,6 +27,7 @@ protected:
 
 signals:
     void paintBoard(vector<vector<Cell> >);
+    void updateScore(int);
 };
 
 #endif // WORKFLOW_H

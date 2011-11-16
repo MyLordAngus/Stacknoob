@@ -24,7 +24,7 @@ private:
     QLabel* nextPiece;
 
 public slots:
-
+    void updateScore(int);
 };
 
 #endif // PANELWIDGET_H
