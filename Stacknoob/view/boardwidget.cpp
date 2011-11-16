@@ -20,7 +20,7 @@ void BoardWidget::paintEvent(QPaintEvent*)
         for(unsigned int j(0); j < this->cells[i].size(); ++j)
         {
             // Fill the rect if the cell is non empty
-            if(this->cells[i][j].isBlank())
+            //if(false == this->cells[i][j].isBlank())
                 painter.fillRect(j * SQUARE_WIDTH,
                                  i * SQUARE_HEIGHT,
                                  SQUARE_WIDTH,
