@@ -8,3 +8,8 @@ PanelWidget::PanelWidget(QWidget *parent) :
 
     this->setLayout(&layout);
 }
+
+void PanelWidget::connectWorkflow(Workflow* w)
+{
+    this->workflow = w;
+}
