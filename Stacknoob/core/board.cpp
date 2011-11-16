@@ -4,7 +4,7 @@ Board::Board()
 {
     this->width = WIDTH;
     this->height = HEIGHT;
-    this->cells = vector< vector<Cell> >(this->height, vector<Cell>(this->width,Cell()));
+    this->cells = vector< vector<Cell> >(this->height, vector<Cell>(this->width, Cell()));
 }
 
 vector< vector<Cell> > Board::mergePieceInBoard()
@@ -82,4 +82,23 @@ bool Board::spin()
     return true;
 }
 
+int Board::deleteFullLine()
+{
+    unsigned int delete_line = 0, j = 0;
 
+    for(unsigned int i = 0; i < this->cells.size(); ++i)
+    {
+        for(j = 0; j < this->cells[i].size(); ++j)
+        {
+            if(this->cells[i][j].isBlank())
+                break;      // Break if there is a blank line in it
+        }
+        if(j == this->cells[i].size())
+        {
+            this->cells.erase(this->cells.begin() + i);
+            this->cells.insert(this->cells.begin() ,vector<Cell>(this->width, Cell()));
+            ++delete_line;
+        }
+    }
+    return delete_line;
+}

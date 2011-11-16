@@ -14,18 +14,21 @@ BoardWidget::BoardWidget(QFrame *parent) :
 void BoardWidget::paintEvent(QPaintEvent*)
 {
     QPainter painter(this);
+    int i = 0, j = 0;
 
-    for(unsigned int i(0); i < this->cells.size(); ++i)
+    for(vector<vector<Cell> >::iterator it_i = this->cells.begin(); it_i != this->cells.end(); ++it_i)
     {
-        for(unsigned int j(0); j < this->cells[i].size(); ++j)
+        i = distance(this->cells.begin(), it_i);
+        for(vector<Cell>::iterator it_j = it_i->begin(); it_j != it_i->end(); ++it_j)
         {
             // Fill the rect if the cell is non empty
             //if(false == this->cells[i][j].isBlank())
-                painter.fillRect(j * SQUARE_WIDTH,
-                                 i * SQUARE_HEIGHT,
-                                 SQUARE_WIDTH,
-                                 SQUARE_HEIGHT,
-                                 this->cells[i][j].getQColor());
+            j = distance(it_i->begin(), it_j);
+            painter.fillRect(j * SQUARE_WIDTH,
+                             i * SQUARE_HEIGHT,
+                             SQUARE_WIDTH,
+                             SQUARE_HEIGHT,
+                             it_j->getQColor());
 
             // Vertical line
             painter.drawLine(QLineF(j * 10, 0.0, j * 10, HEIGHT * SQUARE_HEIGHT));

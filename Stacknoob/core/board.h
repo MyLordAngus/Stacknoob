@@ -20,6 +20,10 @@ public:
     bool move(directionType _direction);
     bool spin();
 
+    /// Test if there is a full line present and delete it
+    /// Return the number of line deleted
+    int deleteFullLine();
+
 protected:
     Piece *piece;
     vector< vector<Cell> >::iterator it_i;
