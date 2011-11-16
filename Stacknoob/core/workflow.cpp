@@ -36,6 +36,14 @@ void Workflow::move(directionType _directionType)
     }
 }
 
+void Workflow::spin()
+{
+    if(this->player->getBoard().spin())
+    {
+        this->updateBoardView();
+    }
+}
+
 void Workflow::fixPieceInBoard()
 {
     this->player->getBoard().setCells(this->player->getBoard().mergePieceInBoard());

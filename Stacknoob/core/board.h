@@ -18,9 +18,12 @@ public:
     vector< vector<Cell> > mergePieceInBoard();
     /// Moving the picies
     bool move(directionType _direction);
+    bool spin();
 
 protected:
     Piece *piece;
+    vector< vector<Cell> >::iterator it_i;
+    vector<Cell>::iterator it_j;
 };
 
 #endif // BOARD_H

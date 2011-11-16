@@ -14,11 +14,14 @@ public:
     Piece();
     int getX() { return this->x; }
     int getY() { return this->y; }
+    int getCurPosition() { return this->cur_position; }
+    vector<Grid> & getPositions() { return this->positions; }
     void setX(int _x) { this->x = _x; }
     void setY(int _y) { this->y = _y; }
     Piece(vector<Grid> & _positions, pieceType _name, int _x = 4, int _y = 0, int _cur_position = 0);
     Grid& getGrid();
     int maxRange(char);
+    int nextPosition();
 
 protected:
     int x;

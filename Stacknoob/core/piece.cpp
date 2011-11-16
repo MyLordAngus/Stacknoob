@@ -39,3 +39,13 @@ int Piece::maxRange(char position)
 
     return (position == 'Y') ? maxY : maxX;
 }
+
+int Piece::nextPosition()
+{
+    if(++this->cur_position >= this->positions.size())
+    {
+        this->cur_position = 0;
+    }
+    this->cells = this->positions.at(this->cur_position).getCells();
+    return this->cur_position;
+}

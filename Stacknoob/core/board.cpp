@@ -16,16 +16,19 @@ vector< vector<Cell> > Board::mergePieceInBoard()
     vector<vector<Cell> > v = this->getCells();
     vector<vector<Cell> > vp = this->piece->getGrid().getCells();
 
-    for(unsigned int i = 0; i < vp.size(); i++)
+    for(it_i = vp.begin(); it_i != vp.end(); ++it_i)
     {
-        for(unsigned int j = 0; j < vp[i].size(); j++)
+        for(it_j = it_i->begin(); it_j != it_i->end(); ++it_j)
         {
-            if(!vp[i][j].isBlank())
+            if(!it_j->isBlank())
             {
-                coordX = j + x;
-                coordY = i + y - 3;
-                if(coordX >= 0 && coordX < this->width && coordY >= 0 && coordY < this->height)
-                    v[coordY][coordX] = vp[i][j];
+                coordX = it_j - it_i->begin() + x;
+                coordY = it_i - vp.begin() + y - 3;
+                if(coordX >= 0 && coordX < this->width &&
+                        coordY >= 0 && coordY < this->height)
+                {
+                    v[coordY][coordX] = *it_j;
+                }
             }
         }
     }
@@ -71,6 +74,12 @@ bool Board::move(directionType _direction)
             return false;
         }
     }
+}
+
+bool Board::spin()
+{
+    this->piece->nextPosition();
+    return true;
 }
 
 
