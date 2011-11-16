@@ -47,5 +47,10 @@ void Workflow::spin()
 void Workflow::fixPieceInBoard()
 {
     this->player->getBoard().setCells(this->player->getBoard().mergePieceInBoard());
-    this->player->getBoard().deleteFullLine();
+
+    int score = this->player->getBoard().deleteFullLine();
+    if(0 < score)
+    {
+        emit(updateScore(100 * score));
+    }
 }
