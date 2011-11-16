@@ -68,6 +68,10 @@ void BoardWidget::keyPressEvent(QKeyEvent* event)
             break;
     case Qt::Key_Up:
             this->workflow->spin();
+            break;
+    case Qt::Key_Space:
+            this->workflow->drop();
+            break;
     default:
         QFrame::keyPressEvent(event);
     }

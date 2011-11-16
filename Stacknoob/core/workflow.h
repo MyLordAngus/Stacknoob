@@ -20,6 +20,7 @@ public:
     void updateBoardView();
     void move(directionType _direction);
     void spin();
+    void drop();
     void fixPieceInBoard();
 
 protected:
