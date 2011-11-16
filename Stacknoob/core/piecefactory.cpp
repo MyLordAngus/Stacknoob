@@ -178,9 +178,9 @@ Piece* PieceFactory::initPiece()
             Grid jPos2 = Grid(4,4);
             pos = jPos2.getCells();
             pos[1][0] = cell;
+            pos[1][1] = cell;
             pos[2][0] = cell;
             pos[3][0] = cell;
-            pos[3][1] = cell;
             jPos2.setCells(pos);
             positions.push_back(jPos2);
 
