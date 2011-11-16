@@ -4,6 +4,7 @@
 #include <QMainWindow>
 
 #include "view/boardwidget.h"
+#include "view/panelwidget.h"
 
 namespace Ui {
     class MainWindow;
@@ -23,6 +24,8 @@ private:
 
     /// The graphical board
     BoardWidget* b_widget;
+    PanelWidget* p_widget;
+
 };
 
 #endif // MAINWINDOW_H

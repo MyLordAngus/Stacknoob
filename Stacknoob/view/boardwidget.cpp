@@ -29,16 +29,16 @@ void BoardWidget::paintEvent(QPaintEvent*)
                              it_j->getQColor());
 
             // Vertical line
-            painter.drawLine(QLineF(j * 10, 0.0, j * 10, HEIGHT * SQUARE_HEIGHT));
+            painter.drawLine(QLineF(j * SQUARE_HEIGHT, 0.0, j * SQUARE_HEIGHT, HEIGHT * SQUARE_HEIGHT));
         }
         // Horizontal line
-        painter.drawLine(QLineF(0.0, i * 10, WIDTH * SQUARE_WIDTH, i * 10));
+        painter.drawLine(QLineF(0.0, i * SQUARE_WIDTH, WIDTH * SQUARE_WIDTH, i * SQUARE_WIDTH));
     }
 
     // Last vertical line
-    painter.drawLine(QLineF(this->cells.front().size() * 10, 0.0, this->cells.front().size() * 10, HEIGHT * SQUARE_HEIGHT));
+    painter.drawLine(QLineF(this->cells.front().size() * SQUARE_HEIGHT, 0.0, this->cells.front().size() * SQUARE_HEIGHT, HEIGHT * SQUARE_HEIGHT));
     // Last horizontal line
-    painter.drawLine(QLineF(0.0, this->cells.size() * 10, WIDTH * SQUARE_WIDTH, this->cells.size() * 10));
+    painter.drawLine(QLineF(0.0, this->cells.size() * SQUARE_WIDTH, WIDTH * SQUARE_WIDTH, this->cells.size() * SQUARE_WIDTH));
 }
 
 void BoardWidget::connectWorkflow(Workflow* w)

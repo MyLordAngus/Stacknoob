@@ -4,7 +4,8 @@ PanelWidget::PanelWidget(QWidget *parent) :
     QWidget(parent)
 {
     QLabel* score = new QLabel();
-    this->layout.addWidget(score);
+    score->setText("hello");
 
+    this->layout.addWidget(score);
     this->setLayout(&layout);
 }

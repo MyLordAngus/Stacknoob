@@ -13,6 +13,8 @@ public:
 
 private:
     QVBoxLayout layout;
+    QLabel* score;
+    QLabel* nextPiece;
 
 signals:
 

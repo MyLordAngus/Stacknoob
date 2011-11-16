@@ -12,9 +12,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // Main Layout
     QHBoxLayout *layout = new QHBoxLayout();
-    BoardWidget *board = new BoardWidget();
-    this->b_widget = board;
-    layout->addWidget(board);
+    this->b_widget = new BoardWidget();
+    layout->addWidget(b_widget);
+
+    this->p_widget = new PanelWidget();
+    layout->addWidget(p_widget);
 
     this->centralWidget()->setLayout(layout);
 }
