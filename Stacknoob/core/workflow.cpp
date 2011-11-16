@@ -44,6 +44,14 @@ void Workflow::spin()
     }
 }
 
+void Workflow::drop()
+{
+    while(this->player->getBoard().move(DOWN) != false){}
+    this->fixPieceInBoard();
+    this->updateBoardView();
+    this->createPiece();
+}
+
 void Workflow::fixPieceInBoard()
 {
     this->player->getBoard().setCells(this->player->getBoard().mergePieceInBoard());
