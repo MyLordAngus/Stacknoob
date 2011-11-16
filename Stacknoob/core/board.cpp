@@ -46,7 +46,7 @@ bool Board::move(directionType _direction)
         case DOWN:
         {
             y++;
-            if(y < HEIGHT)
+            if(y < HEIGHT && checkCollision(DOWN))
             {
                 this->piece->setY(y);
                 return true;
@@ -56,7 +56,7 @@ bool Board::move(directionType _direction)
         case LEFT:
         {
             x--;
-            if(x >= 0)
+            if(x >= 0 && checkCollision(LEFT))
             {
                 this->piece->setX(x);
                 return true;
@@ -66,7 +66,7 @@ bool Board::move(directionType _direction)
         case RIGHT:
         {
             x++;
-            if(x < WIDTH - this->piece->maxRange('X'))
+            if((x < WIDTH - this->piece->maxRange('X')) && checkCollision(RIGHT))
             {
                 this->piece->setX(x);
                 return true;
@@ -101,4 +101,41 @@ int Board::deleteFullLine()
         }
     }
     return delete_line;
+}
+
+bool Board::checkCollision(directionType _direction)
+{
+    int x = this->piece->getX();
+    int y = this->piece->getY();
+    int coordX = 0, coordY = 0;
+    vector<vector<Cell> > vp = this->piece->getGrid().getCells();
+
+    switch (_direction)
+    {
+        case DOWN: y++; break;
+        case LEFT: x--; break;
+        case RIGHT: x++; break;
+    }
+
+    for(it_i = vp.begin(); it_i != vp.end(); ++it_i)
+    {
+        for(it_j = it_i->begin(); it_j != it_i->end(); ++it_j)
+        {
+            if(!it_j->isBlank())
+            {
+                coordX = distance(it_i->begin(), it_j) + x;
+                coordY = distance(vp.begin(), it_i) + y - 3;
+
+                if(coordX >= 0 && coordY >= 0 && coordX < WIDTH && coordY < HEIGHT)
+                {
+                    if(!this->cells[coordY][coordX].isBlank())
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+    }
+
+    return true;
 }
