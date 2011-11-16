@@ -25,6 +25,7 @@ public:
     /// Test if there is a full line present and delete it
     /// Return the number of line deleted
     int deleteFullLine();
+    bool checkCollision(directionType _direction);
 
 protected:
     Piece *piece;
