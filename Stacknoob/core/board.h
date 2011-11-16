@@ -16,9 +16,15 @@ public:
     /// Place the piece in a copy of grid with the right coordonate
     /// to give it to the view
     vector< vector<Cell> > mergePieceInBoard();
-    /// Moving the picies
+
+    /// Moving the pieces in the board
     bool move(directionType _direction);
+    /// Rotate the piece in the board
     bool spin();
+
+    /// Test if there is a full line present and delete it
+    /// Return the number of line deleted
+    int deleteFullLine();
 
 protected:
     Piece *piece;

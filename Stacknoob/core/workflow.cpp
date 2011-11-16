@@ -47,4 +47,5 @@ void Workflow::spin()
 void Workflow::fixPieceInBoard()
 {
     this->player->getBoard().setCells(this->player->getBoard().mergePieceInBoard());
+    this->player->getBoard().deleteFullLine();
 }
