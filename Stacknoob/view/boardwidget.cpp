@@ -65,6 +65,8 @@ void BoardWidget::keyPressEvent(QKeyEvent* event)
     case Qt::Key_Right:
             this->workflow->move(RIGHT);
             break;
+    case Qt::Key_Up:
+            this->workflow->spin();
     default:
         QFrame::keyPressEvent(event);
     }

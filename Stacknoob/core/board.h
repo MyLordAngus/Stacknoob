@@ -18,6 +18,7 @@ public:
     vector< vector<Cell> > mergePieceInBoard();
     /// Moving the picies
     bool move(directionType _direction);
+    bool spin();
 
 protected:
     Piece *piece;

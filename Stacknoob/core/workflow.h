@@ -19,6 +19,7 @@ public:
     /// Repaint the board widget
     void updateBoardView();
     void move(directionType _direction);
+    void spin();
     void fixPieceInBoard();
 
 protected:

@@ -73,4 +73,10 @@ bool Board::move(directionType _direction)
     }
 }
 
+bool Board::spin()
+{
+    this->piece->nextPosition();
+    return true;
+}
+
 
