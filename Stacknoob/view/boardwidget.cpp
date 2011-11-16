@@ -3,12 +3,11 @@
 BoardWidget::BoardWidget(QFrame *parent) :
     QFrame(parent)
 {
-    this->setFocusPolicy(Qt::StrongFocus);  // Respond to keyboard event
-
-    QVBoxLayout* layout = new QVBoxLayout();
-    this->setLayout(layout);
-
     this->cells = vector< vector<Cell> >(HEIGHT, vector<Cell>(WIDTH, Cell()));
+
+    this->setFocusPolicy(Qt::StrongFocus);  // Respond to keyboard event
+    this->setLayout(new QVBoxLayout());
+
 }
 
 void BoardWidget::paintEvent(QPaintEvent*)
@@ -22,7 +21,6 @@ void BoardWidget::paintEvent(QPaintEvent*)
         for(vector<Cell>::iterator it_j = it_i->begin(); it_j != it_i->end(); ++it_j)
         {
             // Fill the rect if the cell is non empty
-            //if(false == this->cells[i][j].isBlank())
             j = distance(it_i->begin(), it_j);
             painter.fillRect(j * SQUARE_WIDTH,
                              i * SQUARE_HEIGHT,
@@ -38,7 +36,7 @@ void BoardWidget::paintEvent(QPaintEvent*)
     }
 
     // Last vertical line
-    painter.drawLine(QLineF(this->cells[0].size() * 10, 0.0, this->cells[0].size() * 10, HEIGHT * SQUARE_HEIGHT));
+    painter.drawLine(QLineF(this->cells.front().size() * 10, 0.0, this->cells.front().size() * 10, HEIGHT * SQUARE_HEIGHT));
     // Last horizontal line
     painter.drawLine(QLineF(0.0, this->cells.size() * 10, WIDTH * SQUARE_WIDTH, this->cells.size() * 10));
 }

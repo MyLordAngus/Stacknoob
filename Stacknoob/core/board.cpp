@@ -22,8 +22,8 @@ vector< vector<Cell> > Board::mergePieceInBoard()
         {
             if(!it_j->isBlank())
             {
-                coordX = it_j - it_i->begin() + x;
-                coordY = it_i - vp.begin() + y - 3;
+                coordX = distance(it_i->begin(), it_j) + x;
+                coordY = distance(vp.begin(), it_i) + y - 3;
                 if(coordX >= 0 && coordX < this->width &&
                         coordY >= 0 && coordY < this->height)
                 {
@@ -96,7 +96,7 @@ int Board::deleteFullLine()
         if(j == this->cells[i].size())
         {
             this->cells.erase(this->cells.begin() + i);
-            this->cells.insert(this->cells.begin() ,vector<Cell>(this->width, Cell()));
+            this->cells.insert(this->cells.begin(), vector<Cell>(this->width, Cell()));
             ++delete_line;
         }
     }
