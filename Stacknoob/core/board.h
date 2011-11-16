@@ -21,6 +21,8 @@ public:
 
 protected:
     Piece *piece;
+    vector< vector<Cell> >::iterator it_i;
+    vector<Cell>::iterator it_j;
 };
 
 #endif // BOARD_H
