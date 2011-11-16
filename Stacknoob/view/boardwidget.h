@@ -21,18 +21,16 @@ public:
     explicit BoardWidget(QFrame *parent = 0);
     void connectWorkflow(Workflow* w);
 
-public slots:
-    void paintBoard(vector<vector<Cell> >);
-
 private:
     Workflow* workflow;
+
     /// The vector of cells to be printed in the view
     vector<vector<Cell> > cells;
     void paintEvent(QPaintEvent* event);
     void keyPressEvent(QKeyEvent *);
 
-signals:
-
+public slots:
+    void paintBoard(vector<vector<Cell> >);
 };
 
 #endif // BOARDWIDGET_H
