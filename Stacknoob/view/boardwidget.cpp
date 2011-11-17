@@ -1,44 +1,14 @@
 #include "boardwidget.h"
 
-BoardWidget::BoardWidget(QFrame *parent) :
-    QFrame(parent)
+BoardWidget::BoardWidget(QWidget *parent) :
+    QWidget(parent)
 {
-    this->cells = vector< vector<Cell> >(HEIGHT, vector<Cell>(WIDTH, Cell()));
+    QVBoxLayout* layout = new QVBoxLayout;
+    this->board = new BoardFrame(HEIGHT, WIDTH);
+    layout->addWidget(this->board);
 
     this->setFocusPolicy(Qt::StrongFocus);  // Respond to keyboard event
-    this->setLayout(new QVBoxLayout());
-
-}
-
-void BoardWidget::paintEvent(QPaintEvent*)
-{
-    QPainter painter(this);
-    int i = 0, j = 0;
-
-    for(vector<vector<Cell> >::iterator it_i = this->cells.begin(); it_i != this->cells.end(); ++it_i)
-    {
-        i = distance(this->cells.begin(), it_i);
-        for(vector<Cell>::iterator it_j = it_i->begin(); it_j != it_i->end(); ++it_j)
-        {
-            // Fill the rect if the cell is non empty
-            j = distance(it_i->begin(), it_j);
-            painter.fillRect(j * SQUARE_WIDTH,
-                             i * SQUARE_HEIGHT,
-                             SQUARE_WIDTH,
-                             SQUARE_HEIGHT,
-                             it_j->getQColor());
-
-            // Vertical line
-            painter.drawLine(QLineF(j * SQUARE_HEIGHT, 0.0, j * SQUARE_HEIGHT, HEIGHT * SQUARE_HEIGHT));
-        }
-        // Horizontal line
-        painter.drawLine(QLineF(0.0, i * SQUARE_WIDTH, WIDTH * SQUARE_WIDTH, i * SQUARE_WIDTH));
-    }
-
-    // Last vertical line
-    painter.drawLine(QLineF(this->cells.front().size() * SQUARE_HEIGHT, 0.0, this->cells.front().size() * SQUARE_HEIGHT, HEIGHT * SQUARE_HEIGHT));
-    // Last horizontal line
-    painter.drawLine(QLineF(0.0, this->cells.size() * SQUARE_WIDTH, WIDTH * SQUARE_WIDTH, this->cells.size() * SQUARE_WIDTH));
+    this->setLayout(layout);
 }
 
 void BoardWidget::connectWorkflow(Workflow* w)
@@ -49,8 +19,7 @@ void BoardWidget::connectWorkflow(Workflow* w)
 
 void BoardWidget::paintBoard(vector<vector<Cell> > c)
 {
-    this->cells = c;
-    this->repaint();
+    this->board->repaint(c);
 }
 
 void BoardWidget::keyPressEvent(QKeyEvent* event)
@@ -73,7 +42,7 @@ void BoardWidget::keyPressEvent(QKeyEvent* event)
             this->workflow->drop();
             break;
     default:
-        QFrame::keyPressEvent(event);
+        QWidget::keyPressEvent(event);
     }
     event->accept();
 }
