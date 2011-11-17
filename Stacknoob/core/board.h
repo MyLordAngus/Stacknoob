@@ -11,7 +11,9 @@ class Board : public Grid
 {
 public:
     Board();
+
     void setPiece(Piece* p) { this->piece = p; }
+    Piece* getPiece() { return this->piece; }
 
     /// Place the piece in a copy of grid with the right coordonate
     /// to give it to the view

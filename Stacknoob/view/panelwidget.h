@@ -26,6 +26,7 @@ private:
 
 public slots:
     void updateScore(int);
+    void udpateNextPiece(vector<vector<Cell> >);
 };
 
 #endif // PANELWIDGET_H
