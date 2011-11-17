@@ -36,7 +36,8 @@ void Workflow::move(directionType _directionType)
     if(this->board.move(_directionType))
     {
         this->updateBoardView();
-    }else
+    }
+    else
     {
         if(_directionType == DOWN){
             fixPieceInBoard();
@@ -68,6 +69,10 @@ void Workflow::fixPieceInBoard()
     if(0 < score)
     {
         emit(updateScore(100 * score));
+    }
+
+    if(this->board.isFull()){
+        this->stopTimer();
     }
 }
 
