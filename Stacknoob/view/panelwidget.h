@@ -7,6 +7,7 @@
 #include <QLCDNumber>
 
 #include "core/workflow.h"
+#include "boardframe.h"
 
 class PanelWidget : public QWidget
 {
@@ -21,7 +22,7 @@ private:
 
     QVBoxLayout layout;
     QLCDNumber* score;
-    QLabel* nextPiece;
+    BoardFrame* next_piece;
 
 public slots:
     void updateScore(int);

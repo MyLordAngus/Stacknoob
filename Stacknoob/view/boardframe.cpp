@@ -1,7 +1,7 @@
 #include "boardframe.h"
 
-BoardFrame::BoardFrame(int height, int width, QFrame *parent) :
-    QFrame(parent)
+BoardFrame::BoardFrame(int h, int w, QFrame *parent) :
+    QFrame(parent), height(h), width(w)
 {
     this->cells = vector< vector<Cell> >(height, vector<Cell>(width, Cell()));
 }
@@ -25,16 +25,16 @@ void BoardFrame::paintEvent(QPaintEvent*)
                              it_j->getQColor());
 
             // Vertical line
-            painter.drawLine(QLineF(j * SQUARE_HEIGHT, 0.0, j * SQUARE_HEIGHT, HEIGHT * SQUARE_HEIGHT));
+            painter.drawLine(QLineF(j * SQUARE_HEIGHT, 0.0, j * SQUARE_HEIGHT, this->height * SQUARE_HEIGHT));
         }
         // Horizontal line
-        painter.drawLine(QLineF(0.0, i * SQUARE_WIDTH, WIDTH * SQUARE_WIDTH, i * SQUARE_WIDTH));
+        painter.drawLine(QLineF(0.0, i * SQUARE_WIDTH, this->width * SQUARE_WIDTH, i * SQUARE_WIDTH));
     }
 
     // Last vertical line
-    painter.drawLine(QLineF(this->cells.front().size() * SQUARE_HEIGHT, 0.0, this->cells.front().size() * SQUARE_HEIGHT, HEIGHT * SQUARE_HEIGHT));
+    painter.drawLine(QLineF(this->cells.front().size() * SQUARE_HEIGHT, 0.0, this->cells.front().size() * SQUARE_HEIGHT, this->height * SQUARE_HEIGHT));
     // Last horizontal line
-    painter.drawLine(QLineF(0.0, this->cells.size() * SQUARE_WIDTH, WIDTH * SQUARE_WIDTH, this->cells.size() * SQUARE_WIDTH));
+    painter.drawLine(QLineF(0.0, this->cells.size() * SQUARE_WIDTH, this->width * SQUARE_WIDTH, this->cells.size() * SQUARE_WIDTH));
 }
 
 void BoardFrame::repaint(vector<vector<Cell> >& c)

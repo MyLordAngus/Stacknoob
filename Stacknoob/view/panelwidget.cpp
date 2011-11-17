@@ -5,8 +5,10 @@ PanelWidget::PanelWidget(QWidget *parent) :
 {
     this->score = new QLCDNumber;
     this->score->setDigitCount(4);
-
     this->layout.addWidget(score);
+
+    this->next_piece = new BoardFrame(6, 6);
+    this->layout.addWidget(next_piece);
 
     this->setLayout(&layout);
 }

@@ -20,6 +20,8 @@ public:
 private:
     /// The vector of cells to be printed in the view
     vector<vector<Cell> > cells;
+    int height;
+    int width;
 };
 
 #endif // BOARDFRAME_H
