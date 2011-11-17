@@ -40,7 +40,9 @@ void Workflow::move(directionType _directionType)
     else
     {
         if(_directionType == DOWN){
-            fixPieceInBoard();
+            if(-1 == fixPieceInBoard())
+                return;
+
             this->createPiece();
         }
     }
@@ -57,23 +59,28 @@ void Workflow::spin()
 void Workflow::drop()
 {
     while(this->board.move(DOWN) != false){}
-    this->fixPieceInBoard();
+    if(-1 == this->fixPieceInBoard())
+        return;
+
     this->createPiece();
 }
 
-void Workflow::fixPieceInBoard()
+int Workflow::fixPieceInBoard()
 {
     this->board.setCells(this->board.mergePieceInBoard());
 
     int score = this->board.deleteFullLine();
     if(0 < score)
-    {
         emit(updateScore(100 * score));
-    }
 
     if(this->board.isFull()){
         this->stopTimer();
+
+        this->board.setNextPiece(0);
+        emit endGame();
+        return -1;
     }
+    return 0;
 }
 
 void Workflow::startTimer()
