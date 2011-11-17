@@ -24,7 +24,7 @@ public:
     void move(directionType _direction);
     void spin();
     void drop();
-    void fixPieceInBoard();
+    int fixPieceInBoard();
 
     /// Timer stuff
     void startTimer();
@@ -43,6 +43,7 @@ signals:
     void paintBoard(vector<vector<Cell> >);
     void updateScore(int);
     void nextPiece(vector<vector<Cell> >);
+    void endGame();
 };
 
 #endif // WORKFLOW_H

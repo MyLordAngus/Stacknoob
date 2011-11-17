@@ -33,4 +33,10 @@ void MainWindow::connectWorkflow(Workflow* w)
 {
     this->b_widget->connectWorkflow(w);
     this->p_widget->connectWorkflow(w);
+
+    connect(w, SIGNAL(endGame()), this, SLOT(disconnectWorkflow()));
+}
+void MainWindow::disconnectWorkflow()
+{
+    this->b_widget->disconnectWorkflow();
 }
