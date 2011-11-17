@@ -78,8 +78,12 @@ bool Board::move(directionType _direction)
 
 bool Board::spin()
 {
-    this->piece->nextPosition();
-    return true;
+    if(this->checkCollision(ROTATE))
+    {
+        this->piece->rotate();
+        return true;
+    }
+    return false;
 }
 
 int Board::deleteFullLine()
@@ -108,13 +112,20 @@ bool Board::checkCollision(directionType _direction)
     int x = this->piece->getX();
     int y = this->piece->getY();
     int coordX = 0, coordY = 0;
-    vector<vector<Cell> > vp = this->piece->getGrid().getCells();
+    vector<vector<Cell> > vp;
+
+    if(_direction == ROTATE){
+         vp = this->piece->getPositions().at(this->piece->nextPosition()).getCells();
+    }else{
+         vp = this->piece->getGrid().getCells();
+    }
 
     switch (_direction)
     {
         case DOWN: y++; break;
         case LEFT: x--; break;
         case RIGHT: x++; break;
+        case ROTATE: break;
     }
 
     for(it_i = vp.begin(); it_i != vp.end(); ++it_i)
@@ -132,6 +143,10 @@ bool Board::checkCollision(directionType _direction)
                     {
                         return false;
                     }
+                }
+                else
+                {
+                    return false;
                 }
             }
         }

@@ -40,12 +40,18 @@ int Piece::maxRange(char position)
     return (position == 'Y') ? maxY : maxX;
 }
 
+void Piece::rotate()
+{
+    this->cur_position = this->nextPosition();
+    this->cells = this->positions.at(this->cur_position).getCells();
+}
+
 int Piece::nextPosition()
 {
-    if(++this->cur_position >= this->positions.size())
+    int pos = this->cur_position;
+    if(++pos >= this->positions.size())
     {
-        this->cur_position = 0;
+        return 0;
     }
-    this->cells = this->positions.at(this->cur_position).getCells();
-    return this->cur_position;
+    return pos;
 }

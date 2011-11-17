@@ -5,7 +5,7 @@
 #include "piece.h"
 #include "constants.h"
 
-enum directionType {DOWN ,LEFT ,RIGHT };
+enum directionType {DOWN ,LEFT ,RIGHT, ROTATE };
 
 class Board : public Grid
 {

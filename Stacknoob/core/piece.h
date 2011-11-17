@@ -21,6 +21,7 @@ public:
     Piece(vector<Grid> & _positions, pieceType _name, int _x = 4, int _y = 0, int _cur_position = 0);
     Grid& getGrid();
     int maxRange(char);
+    void rotate();
     int nextPosition();
 
 protected:
