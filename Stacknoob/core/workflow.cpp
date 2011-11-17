@@ -77,6 +77,8 @@ int Workflow::fixPieceInBoard()
         this->stopTimer();
 
         this->board.setNextPiece(0);
+
+        emit nextPiece(vector< vector<Cell> >(4, vector<Cell>(4, Cell())));     // delete next piece in view
         emit endGame();
         return -1;
     }
