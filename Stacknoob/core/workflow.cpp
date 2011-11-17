@@ -11,10 +11,16 @@ Workflow::Workflow(Player* p) : QObject()
 
 void Workflow::createPiece()
 {
-    this->player->getBoard().setPiece(PieceFactory::initPiece());
+    Piece* p = this->player->getBoard().getNextPiece();
+    if(p == NULL)
+        this->player->getBoard().setPiece(PieceFactory::initPiece());
+    else
+        this->player->getBoard().setPiece(this->player->getBoard().getNextPiece());
+
+    this->player->getBoard().setNextPiece(PieceFactory::initPiece());
     this->updateBoardView();
 
-    emit nextPiece(this->player->getBoard().getPiece()->getGrid().getCells());
+    emit nextPiece(this->player->getBoard().getNextPiece()->getGrid().getCells());
 }
 
 void Workflow::updateBoardView()

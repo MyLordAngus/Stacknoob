@@ -13,6 +13,8 @@ public:
     Board();
 
     void setPiece(Piece* p) { this->piece = p; }
+    Piece* getNextPiece() { return this->next_piece; }
+    void setNextPiece(Piece* p) { this->next_piece = p; }
     Piece* getPiece() { return this->piece; }
 
     /// Place the piece in a copy of grid with the right coordonate
@@ -30,7 +32,7 @@ public:
     bool checkCollision(directionType _direction);
 
 protected:
-    Piece *piece;
+    Piece *piece, *next_piece;
     vector< vector<Cell> >::iterator it_i;
     vector<Cell>::iterator it_j;
 };

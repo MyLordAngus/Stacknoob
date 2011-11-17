@@ -5,6 +5,8 @@ Board::Board()
     this->width = WIDTH;
     this->height = HEIGHT;
     this->cells = vector< vector<Cell> >(this->height, vector<Cell>(this->width, Cell()));
+
+    this->next_piece = 0;
 }
 
 vector< vector<Cell> > Board::mergePieceInBoard()
