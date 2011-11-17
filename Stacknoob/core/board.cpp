@@ -1,4 +1,6 @@
 #include "board.h"
+#include <stdlib.h>
+#include <time.h>
 
 Board::Board() : piece(0), next_piece(0), Grid(WIDTH, HEIGHT)
 {
@@ -7,6 +9,10 @@ Board::Board() : piece(0), next_piece(0), Grid(WIDTH, HEIGHT)
 
 vector< vector<Cell> > Board::mergePieceInBoard()
 {
+    if(this->piece == NULL){
+        return this->cells;
+    }
+
     int x = this->piece->getX();
     int y = this->piece->getY();
     int coordX = 0, coordY = 0;
@@ -160,5 +166,13 @@ bool Board::isFull()
         {
             return true;
         }
+    }
+}
+
+void Board::fillAllCells(int y)
+{
+    for(int x = 0; x < this->cells[y].size(); x++)
+    {
+        this->cells[y][x] = Cell((colorType)(rand() % 7 + 1),false);
     }
 }

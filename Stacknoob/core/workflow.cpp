@@ -1,4 +1,5 @@
 #include "workflow.h"
+#include <time.h>
 
 Workflow::Workflow() : QObject()
 {
@@ -77,9 +78,18 @@ int Workflow::fixPieceInBoard()
         this->stopTimer();
 
         this->board.setNextPiece(0);
+        this->board.setPiece(0);
 
         emit nextPiece(vector< vector<Cell> >(4, vector<Cell>(4, Cell())));     // delete next piece in view
+
+        for(int y = (this->board.getCells().size() - 1); y >= 0; y--){
+            this->board.fillAllCells(y);
+            this->updateBoardView();
+            usleep(15000);
+        }
+
         emit endGame();
+
         return -1;
     }
     return 0;
