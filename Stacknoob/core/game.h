@@ -10,16 +10,20 @@ using namespace std;
 
 class Game
 {
-protected:
-    vector<Player*> players;
-    Workflow* workflow;
-
 public:
     Game();
+    ~Game();
+
     Player* getPlayer(int i) { return this->players[i]; }
+    Workflow* getWorkflow() { return this->workflow; }
+
     void initBoard(Player*);
-    Workflow* getWorkflow();
     void launchGame();
+
+private:
+    int level_number;
+    vector<Player*> players;
+    Workflow* workflow;
 
 };
 
