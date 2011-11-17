@@ -13,6 +13,8 @@ void Workflow::createPiece()
 {
     this->player->getBoard().setPiece(PieceFactory::initPiece());
     this->updateBoardView();
+
+    emit nextPiece(this->player->getBoard().getPiece()->getGrid().getCells());
 }
 
 void Workflow::updateBoardView()
@@ -48,7 +50,6 @@ void Workflow::drop()
 {
     while(this->player->getBoard().move(DOWN) != false){}
     this->fixPieceInBoard();
-    this->updateBoardView();
     this->createPiece();
 }
 
