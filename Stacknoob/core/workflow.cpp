@@ -78,6 +78,16 @@ void Workflow::startTimer()
     timer->start(500);
 }
 
+void Workflow::setTimerInterval(int msec)
+{
+    this->timer->setInterval(msec);
+}
+
+void Workflow::stopTimer()
+{
+    this->timer->stop();
+}
+
 void Workflow::timeoutView()
 {
     this->move(DOWN);
