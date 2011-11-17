@@ -31,6 +31,9 @@ public:
     int deleteFullLine();
     bool checkCollision(directionType _direction);
 
+    /// Check if the board is completed
+    bool isFull();
+
 protected:
     Piece *piece, *next_piece;
     vector< vector<Cell> >::iterator it_i;
