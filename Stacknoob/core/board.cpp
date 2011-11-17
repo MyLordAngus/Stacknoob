@@ -151,6 +151,16 @@ bool Board::checkCollision(directionType _direction)
             }
         }
     }
-
     return true;
+}
+
+bool Board::isFull()
+{
+    for(int x = 0; x < this->cells[0].size(); x++)
+    {
+        if(!this->cells[0][x].isBlank())
+        {
+            return true;
+        }
+    }
 }
