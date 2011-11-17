@@ -50,7 +50,6 @@ void Workflow::drop()
 {
     while(this->player->getBoard().move(DOWN) != false){}
     this->fixPieceInBoard();
-    this->updateBoardView();
     this->createPiece();
 }
 

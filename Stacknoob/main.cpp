@@ -10,9 +10,9 @@ int main(int argc, char *argv[])
     MainWindow w;
 
     Game game;
+    w.connectWorkflow(game.getWorkflow());
     game.launchGame();
 
-    w.connectWorkflow(game.getWorkflow());
     w.show();
 
     return a.exec();
