@@ -23,4 +23,5 @@ void Game::launchGame()
 {
     //for(unsigned int i = 0; i < this->players.size(); i++)
     this->workflow->createPiece();
+    this->workflow->startTimer();
 }

@@ -2,6 +2,7 @@
 #define WORKFLOW_H
 
 #include <QObject>
+#include <QTimer>
 
 #include "piecefactory.h"
 #include "board.h"
@@ -22,9 +23,14 @@ public:
     void spin();
     void drop();
     void fixPieceInBoard();
+    void startTimer();
 
 protected:
     Player* player;
+    QTimer* timer;
+
+public slots:
+    void timeoutView();
 
 signals:
     void paintBoard(vector<vector<Cell> >);

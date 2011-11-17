@@ -63,3 +63,16 @@ void Workflow::fixPieceInBoard()
         emit(updateScore(100 * score));
     }
 }
+
+void Workflow::startTimer()
+{
+    this->timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(timeoutView()));
+    timer->start(500);
+}
+
+void Workflow::timeoutView()
+{
+    this->move(DOWN);
+    this->updateBoardView();
+}
