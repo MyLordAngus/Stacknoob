@@ -1,12 +1,8 @@
 #include "board.h"
 
-Board::Board()
+Board::Board() : piece(0), next_piece(0), Grid(WIDTH, HEIGHT)
 {
-    this->width = WIDTH;
-    this->height = HEIGHT;
     this->cells = vector< vector<Cell> >(this->height, vector<Cell>(this->width, Cell()));
-
-    this->next_piece = 0;
 }
 
 vector< vector<Cell> > Board::mergePieceInBoard()
@@ -99,7 +95,7 @@ int Board::deleteFullLine()
             if(this->cells[i][j].isBlank())
                 break;      // Break if there is a blank line in it
         }
-        if(j == this->cells[i].size())
+        if(j == this->cells[i].size())  // We have inspect all cell on a line without break
         {
             this->cells.erase(this->cells.begin() + i);
             this->cells.insert(this->cells.begin(), vector<Cell>(this->width, Cell()));

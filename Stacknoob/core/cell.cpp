@@ -1,15 +1,11 @@
 #include "cell.h"
 
-Cell::Cell()
+Cell::Cell() : color(BLACK), is_blank(true)
 {
-    color = BLACK;
-    is_blank = true;
 }
 
-Cell::Cell(colorType _color, bool _blank = false)
+Cell::Cell(colorType c, bool b = false) : color(c), is_blank(b)
 {
-    color = _color;
-    is_blank = _blank;
 }
 
 bool Cell::isBlank()

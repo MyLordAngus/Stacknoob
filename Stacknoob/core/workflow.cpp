@@ -7,32 +7,33 @@ Workflow::Workflow() : QObject()
 Workflow::Workflow(Player* p) : QObject()
 {
     this->player = p;
+    this->board = p->getBoard();
 }
 
 void Workflow::createPiece()
 {
-    Piece* p = this->player->getBoard().getNextPiece();
+    Piece* p = this->board.getNextPiece();
     if(p == NULL)
-        this->player->getBoard().setPiece(PieceFactory::initPiece());
+        this->board.setPiece(PieceFactory::initPiece());
     else
-        this->player->getBoard().setPiece(this->player->getBoard().getNextPiece());
+        this->board.setPiece(this->board.getNextPiece());
 
-    this->player->getBoard().setNextPiece(PieceFactory::initPiece());
+    this->board.setNextPiece(PieceFactory::initPiece());
     this->updateBoardView();
 
-    emit nextPiece(this->player->getBoard().getNextPiece()->getGrid().getCells());
+    emit nextPiece(this->board.getNextPiece()->getGrid().getCells());
 }
 
 void Workflow::updateBoardView()
 {
-    vector<vector<Cell> > v = this->player->getBoard().mergePieceInBoard();
+    vector<vector<Cell> > v = this->board.mergePieceInBoard();
 
     emit paintBoard(v);
 }
 
 void Workflow::move(directionType _directionType)
 {
-    if(this->player->getBoard().move(_directionType))
+    if(this->board.move(_directionType))
     {
         this->updateBoardView();
     }else
@@ -46,7 +47,7 @@ void Workflow::move(directionType _directionType)
 
 void Workflow::spin()
 {
-    if(this->player->getBoard().spin())
+    if(this->board.spin())
     {
         this->updateBoardView();
     }
@@ -54,16 +55,16 @@ void Workflow::spin()
 
 void Workflow::drop()
 {
-    while(this->player->getBoard().move(DOWN) != false){}
+    while(this->board.move(DOWN) != false){}
     this->fixPieceInBoard();
     this->createPiece();
 }
 
 void Workflow::fixPieceInBoard()
 {
-    this->player->getBoard().setCells(this->player->getBoard().mergePieceInBoard());
+    this->board.setCells(this->board.mergePieceInBoard());
 
-    int score = this->player->getBoard().deleteFullLine();
+    int score = this->board.deleteFullLine();
     if(0 < score)
     {
         emit(updateScore(100 * score));

@@ -27,6 +27,7 @@ public:
 
 protected:
     Player* player;
+    Board board;
     QTimer* timer;
 
 public slots:
