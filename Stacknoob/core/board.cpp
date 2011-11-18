@@ -1,6 +1,6 @@
 #include "board.h"
 #include <stdlib.h>
-#include <time.h>
+#include <unistd.h>
 
 Board::Board() : piece(0), next_piece(0), Grid(WIDTH, HEIGHT)
 {
@@ -28,6 +28,7 @@ vector< vector<Cell> > Board::mergePieceInBoard()
             {
                 coordX = distance(it_i->begin(), it_j) + x;
                 coordY = distance(vp.begin(), it_i) + y - 3;
+
                 if(coordX >= 0 && coordX < this->width &&
                         coordY >= 0 && coordY < this->height)
                 {
@@ -36,7 +37,6 @@ vector< vector<Cell> > Board::mergePieceInBoard()
             }
         }
     }
-
     return v;
 }
 
@@ -50,7 +50,7 @@ bool Board::move(directionType _direction)
         case DOWN:
         {
             y++;
-            if(y < HEIGHT && checkCollision(DOWN))
+            if(y < HEIGHT && 1 == checkCollision(DOWN))
             {
                 this->piece->setY(y);
                 return true;
@@ -60,7 +60,7 @@ bool Board::move(directionType _direction)
         case LEFT:
         {
             x--;
-            if(x >= 0 && checkCollision(LEFT))
+            if(x >= 0 && 1 == checkCollision(LEFT))
             {
                 this->piece->setX(x);
                 return true;
@@ -70,7 +70,7 @@ bool Board::move(directionType _direction)
         case RIGHT:
         {
             x++;
-            if((x < WIDTH - this->piece->maxRange('X')) && checkCollision(RIGHT))
+            if((x < WIDTH - this->piece->maxRange('X')) && 1 == checkCollision(RIGHT))
             {
                 this->piece->setX(x);
                 return true;
@@ -82,7 +82,10 @@ bool Board::move(directionType _direction)
 
 bool Board::spin()
 {
-    if(this->checkCollision(ROTATE))
+    int rotate = 2;
+    while(rotate = this->checkCollision(ROTATE) == 2){} // Wall kick if possible
+
+    if(-1 != rotate)
     {
         this->piece->rotate();
         return true;
@@ -111,18 +114,17 @@ int Board::deleteFullLine()
     return delete_line;
 }
 
-bool Board::checkCollision(directionType _direction)
+int Board::checkCollision(directionType _direction)
 {
     int x = this->piece->getX();
     int y = this->piece->getY();
     int coordX = 0, coordY = 0;
     vector<vector<Cell> > vp;
 
-    if(_direction == ROTATE){
-         vp = this->piece->getPositions().at(this->piece->nextPosition()).getCells();
-    }else{
-         vp = this->piece->getGrid().getCells();
-    }
+    if(_direction == ROTATE)
+        vp = this->piece->getPositions().at(this->piece->nextPosition()).getCells();
+    else
+        vp = this->piece->getGrid().getCells();
 
     switch (_direction)
     {
@@ -136,26 +138,41 @@ bool Board::checkCollision(directionType _direction)
     {
         for(it_j = it_i->begin(); it_j != it_i->end(); ++it_j)
         {
-            if(!it_j->isBlank())
-            {
-                coordX = distance(it_i->begin(), it_j) + x;
-                coordY = distance(vp.begin(), it_i) + y - 3;
+            if(it_j->isBlank())
+                continue;
 
-                if(coordX >= 0 && coordY >= 0 && coordX < WIDTH && coordY < HEIGHT)
-                {
-                    if(!this->cells[coordY][coordX].isBlank())
-                    {
-                        return false;
-                    }
-                }
-                else
-                {
-                    return false;
-                }
+            coordX = distance(it_i->begin(), it_j) + x;
+            coordY = distance(vp.begin(), it_i) + y - 3;
+
+            if(coordX >= 0 && coordY >= 0 && coordX < WIDTH && coordY < HEIGHT)
+            {
+                if(!this->cells[coordY][coordX].isBlank()) { return 0; }
+            }
+            else
+            {
+                if(_direction == ROTATE) { return wallKick(coordX, coordY); }
+                return 0;
             }
         }
     }
-    return true;
+    return 1;
+}
+
+int Board::wallKick(int coordX, int coordY)
+{
+    if(coordX < 0){
+        this->move(RIGHT);
+        return 2;
+    }
+    if(coordX >= WIDTH){
+        this->move(LEFT);
+        return 2;
+    }
+    if(coordY < 0){
+        this->move(DOWN);
+        return 2;
+    }
+    return 0;
 }
 
 bool Board::isFull()
@@ -163,16 +180,14 @@ bool Board::isFull()
     for(int x = 0; x < this->cells[0].size(); x++)
     {
         if(!this->cells[0][x].isBlank())
-        {
             return true;
-        }
     }
 }
 
 void Board::fillAllCells(int y)
 {
     for(int x = 0; x < this->cells[y].size(); x++)
-    {
-        this->cells[y][x] = Cell((colorType)(rand() % 7 + 1),false);
-    }
+        this->cells[y][x] = Cell((colorType)(rand() % 7 + 1), false);
 }
+
+
