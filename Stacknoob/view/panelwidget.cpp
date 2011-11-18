@@ -23,7 +23,7 @@ void PanelWidget::connectWorkflow(Workflow* w)
 
 void PanelWidget::updateScore(int s)
 {
-    score->display(s + score->value());
+    score->display(s);
 }
 
 void PanelWidget::udpateNextPiece(vector<vector<Cell> > c)

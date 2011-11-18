@@ -72,7 +72,10 @@ int Workflow::fixPieceInBoard()
 
     int score = this->board.deleteFullLine();
     if(0 < score)
-        emit(updateScore(100 * score));
+    {
+        this->player->setScore(100 * score);
+        emit(updateScore(this->player->getScore()));
+    }
 
     if(this->board.isFull()){
         this->stopTimer();
