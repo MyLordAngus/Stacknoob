@@ -71,10 +71,45 @@ int Workflow::fixPieceInBoard()
     this->board.setCells(this->board.mergePieceInBoard());
 
     int score = this->board.deleteFullLine();
+
     if(0 < score)
     {
-        this->player->setScore(100 * score);
+        this->player->setLines(this->player->getlines() + score);
+        this->player->setScore(this->player->getScore() + (100 * score));
         emit(updateScore(this->player->getScore()));
+        emit(updateLines(this->player->getlines()));
+
+        int lines = this->player->getlines();
+        int level = 1;
+
+        if(lines > 1 && lines <= 90 )
+        {
+            level = (int)(1 + ((float(lines) - 1.0)/10.0));
+        }
+        else if(lines >= 91)
+        {
+            level = 10;
+        }
+
+        if(this->player->getLevel() != level)
+        {
+            this->player->setLevel(level);
+            emit(updateLevel(level));
+
+            switch (level)
+            {
+                case 1:  this->setTimerInterval(500); break;
+                case 2:  this->setTimerInterval(450); break;
+                case 3:  this->setTimerInterval(400); break;
+                case 4:  this->setTimerInterval(350); break;
+                case 5:  this->setTimerInterval(300); break;
+                case 6:  this->setTimerInterval(250); break;
+                case 7:  this->setTimerInterval(200); break;
+                case 8:  this->setTimerInterval(150); break;
+                case 9:  this->setTimerInterval(100); break;
+                case 10: this->setTimerInterval(50); break;
+            }
+        }
     }
 
     if(this->board.isFull()){
