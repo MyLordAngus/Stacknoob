@@ -10,6 +10,14 @@ PanelWidget::PanelWidget(QWidget *parent) :
     this->next_piece = new BoardFrame(6, 6);
     this->layout.addWidget(next_piece);
 
+    this->level = new QLabel;
+    this->level->setText("Level : 1");
+    this->layout.addWidget(level);
+
+    this->lines = new QLabel;
+    this->lines->setText("Lines : 0");
+    this->layout.addWidget(lines);
+
     this->setLayout(&layout);
 }
 
@@ -18,12 +26,24 @@ void PanelWidget::connectWorkflow(Workflow* w)
     this->workflow = w;
     connect(w, SIGNAL(updateScore(int)), this, SLOT(updateScore(int)));
     connect(w, SIGNAL(nextPiece(vector<vector<Cell> >)), this, SLOT(udpateNextPiece(vector<vector<Cell> >)));
+    connect(w, SIGNAL(updateLevel(int)), this, SLOT(updateLevel(int)));
+    connect(w, SIGNAL(updateLines(int)), this, SLOT(updateLines(int)));
 }
 
 
 void PanelWidget::updateScore(int s)
 {
     score->display(s);
+}
+
+void PanelWidget::updateLevel(int l)
+{
+    this->level->setText("Level : " + QString::number(l));
+}
+
+void PanelWidget::updateLines(int l)
+{
+    this->lines->setText("Lines : " + QString::number(l));
 }
 
 void PanelWidget::udpateNextPiece(vector<vector<Cell> > c)

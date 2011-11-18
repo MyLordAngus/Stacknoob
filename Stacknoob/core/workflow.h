@@ -42,6 +42,8 @@ public slots:
 signals:
     void paintBoard(vector<vector<Cell> >);
     void updateScore(int);
+    void updateLevel(int);
+    void updateLines(int);
     void nextPiece(vector<vector<Cell> >);
     void endGame();
 };
