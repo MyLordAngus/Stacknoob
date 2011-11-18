@@ -2,7 +2,7 @@
 
 Game::Game()
 {
-    Player* p = new Player("hello", 0);
+    Player* p = new Player("hello");
 
     this->initBoard(p);
     players.push_back(p);

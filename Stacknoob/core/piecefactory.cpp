@@ -1,6 +1,5 @@
 #include "piecefactory.h"
 #include <stdlib.h>
-#include <time.h>
 
 PieceFactory::PieceFactory()
 {
@@ -8,8 +7,6 @@ PieceFactory::PieceFactory()
 
 Piece* PieceFactory::initPiece()
 {
-    //random value
-    srand( time(NULL) );
     int x = rand() % 7 + 1;
 
     pieceType pName;

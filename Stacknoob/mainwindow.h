@@ -27,6 +27,10 @@ private:
     /// The graphical board
     BoardWidget* b_widget;
     PanelWidget* p_widget;
+
+public slots:
+   /// Delete ref workflow when game is finished
+   void disconnectWorkflow();
 };
 
 #endif // MAINWINDOW_H

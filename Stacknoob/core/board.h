@@ -34,6 +34,8 @@ public:
     /// Check if the board is completed
     bool isFull();
 
+    void fillAllCells(int y);
+
 protected:
     Piece *piece, *next_piece;
     vector< vector<Cell> >::iterator it_i;

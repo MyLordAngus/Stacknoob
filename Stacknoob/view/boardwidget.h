@@ -28,6 +28,7 @@ private:
 
 public slots:
     void paintBoard(vector<vector<Cell> >);
+    void disconnectWorkflow();
 };
 
 #endif // BOARDWIDGET_H
