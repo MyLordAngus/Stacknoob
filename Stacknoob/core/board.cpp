@@ -18,6 +18,7 @@ vector< vector<Cell> > Board::mergePieceInBoard()
     int coordX = 0, coordY = 0;
 
     vector<vector<Cell> > v = this->getCells();
+    Grid g = this->piece->getGrid();
     vector<vector<Cell> > vp = this->piece->getGrid().getCells();
 
     for(it_i = vp.begin(); it_i != vp.end(); ++it_i)
@@ -124,7 +125,7 @@ int Board::checkCollision(directionType _direction)
     vector<vector<Cell> > vp;
 
     if(_direction == ROTATE)
-        vp = this->piece->getPositions().at(this->piece->nextPosition()).getCells();
+        vp = this->piece->nextPosition()->getCells();
     else
         vp = this->piece->getGrid().getCells();
 

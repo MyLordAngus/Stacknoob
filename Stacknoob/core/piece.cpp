@@ -1,17 +1,13 @@
 #include "piece.h"
 
-Piece::Piece()
+Piece::Piece(vector<Grid> & p, pieceType n, int _x, int _y) : Grid(p[0].getCells()), x(_x), y(_y), positions(p), name(n)
 {
+    this->cur_position = this->positions.begin();
 }
 
-Piece::Piece(vector<Grid> & p, pieceType n, int _x, int _y, int cur_pos) :
-    Grid(p[cur_pos]), x(_x), y(_y), positions(p), cur_position(cur_pos), name(n)
+Grid Piece::getGrid()
 {
-}
-
-Grid& Piece::getGrid()
-{
-    return this->positions.at(this->cur_position);
+    return *(this->cur_position);
 }
 
 int Piece::maxRange(char position)
@@ -43,15 +39,15 @@ int Piece::maxRange(char position)
 void Piece::rotate()
 {
     this->cur_position = this->nextPosition();
-    this->cells = this->positions.at(this->cur_position).getCells();
+    this->cells = this->cur_position->getCells();
 }
 
-int Piece::nextPosition()
+vector<Grid>::iterator Piece::nextPosition()
 {
-    int pos = this->cur_position;
-    if(++pos >= this->positions.size())
+    vector<Grid>::iterator pos = this->cur_position;
+    if(++pos == this->positions.end())
     {
-        return 0;
+        return this->positions.begin();
     }
     return pos;
 }
