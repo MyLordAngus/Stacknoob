@@ -12,7 +12,7 @@ Grid Piece::getGrid()
 
 int Piece::maxRange(char position)
 {
-    int maxX = 0, maxY = 0;
+    unsigned int maxX = 0, maxY = 0;
 
     for(unsigned int y = 0; y < this->cells.size(); y++)
     {
