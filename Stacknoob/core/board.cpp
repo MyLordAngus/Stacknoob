@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-Board::Board() : piece(0), next_piece(0), Grid(WIDTH, HEIGHT)
+Board::Board() : Grid(WIDTH, HEIGHT), piece(0), next_piece(0)
 {
     this->cells = vector< vector<Cell> >(this->height, vector<Cell>(this->width, Cell()));
 }
@@ -77,13 +77,15 @@ bool Board::move(directionType _direction)
             }
             return false;
         }
+        default:
+            return false;
     }
 }
 
 bool Board::spin()
 {
     int rotate = 2;
-    while(rotate = this->checkCollision(ROTATE) == 2){} // Wall kick if possible
+    while((rotate = this->checkCollision(ROTATE)) == 2){} // Wall kick if possible
 
     if(-1 != rotate)
     {
@@ -177,16 +179,17 @@ int Board::wallKick(int coordX, int coordY)
 
 bool Board::isFull()
 {
-    for(int x = 0; x < this->cells[0].size(); x++)
+    for(unsigned int x = 0; x < this->cells[0].size(); x++)
     {
         if(!this->cells[0][x].isBlank())
             return true;
     }
+    return false;
 }
 
 void Board::fillAllCells(int y)
 {
-    for(int x = 0; x < this->cells[y].size(); x++)
+    for(unsigned int x = 0; x < this->cells[y].size(); x++)
         this->cells[y][x] = Cell((colorType)(rand() % 7 + 1), false);
 }
 

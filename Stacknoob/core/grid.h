@@ -10,9 +10,9 @@ using namespace std;
 class Grid
 {
 protected:
-    int width;
-    int height;
     vector< vector<Cell> > cells;
+    int height;
+    int width;
 
 public:
     Grid();
