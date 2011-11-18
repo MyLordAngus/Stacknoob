@@ -95,6 +95,20 @@ int Workflow::fixPieceInBoard()
         {
             this->player->setLevel(level);
             emit(updateLevel(level));
+
+            switch (level)
+            {
+                case 1:  this->setTimerInterval(500); break;
+                case 2:  this->setTimerInterval(450); break;
+                case 3:  this->setTimerInterval(400); break;
+                case 4:  this->setTimerInterval(350); break;
+                case 5:  this->setTimerInterval(300); break;
+                case 6:  this->setTimerInterval(250); break;
+                case 7:  this->setTimerInterval(200); break;
+                case 8:  this->setTimerInterval(150); break;
+                case 9:  this->setTimerInterval(100); break;
+                case 10: this->setTimerInterval(50); break;
+            }
         }
     }
 
