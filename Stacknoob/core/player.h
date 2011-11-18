@@ -13,14 +13,19 @@ protected:
     string name;
     int score;
     int level;
+    int lines;
     Board board;
 
 public:
-    Player(string _name,int _score = 0,int _level = 0);
+    Player(string _name, int _score = 0, int _level = 1, int _lines = 0);
     void setBoard(Board _board);
     int getScore() { return this->score; }
     void setScore(int _score) { this->score = _score; }
+    int getLevel() { return this->level; }
     void setLevel(int _level) { this->level = _level; }
+    int getlines() { return this->lines; }
+    void setLines(int _lines) { this->lines = _lines; }
+
     Board& getBoard();
 };
 

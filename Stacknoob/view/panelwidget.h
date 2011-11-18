@@ -22,10 +22,14 @@ private:
 
     QVBoxLayout layout;
     QLCDNumber* score;
+    QLabel* level;
+    QLabel* lines;
     BoardFrame* next_piece;
 
 public slots:
     void updateScore(int);
+    void updateLevel(int);
+    void updateLines(int);
     void udpateNextPiece(vector<vector<Cell> >);
 };
 
