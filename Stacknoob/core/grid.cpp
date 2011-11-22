@@ -2,12 +2,13 @@
 
 Grid::Grid()
 {
-
 }
 
-Grid::Grid(int _width, int _height)
+Grid::Grid(vector< vector<Cell> >& c) : cells(c), height(c.size()), width(c[0].size())
 {
-    this->height = _height;
-    this->width = _width;
+}
+
+Grid::Grid(int w, int h) : height(h), width(w)
+{
     this->cells = vector< vector<Cell> >(this->height, vector<Cell>(this->width,Cell()));
 }

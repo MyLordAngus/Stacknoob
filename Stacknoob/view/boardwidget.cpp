@@ -1,39 +1,61 @@
 #include "boardwidget.h"
 
-BoardWidget::BoardWidget(QFrame *parent) :
-    QFrame(parent)
+BoardWidget::BoardWidget(QWidget *parent) :
+    QWidget(parent)
 {
-    QVBoxLayout* layout = new QVBoxLayout();
+    this->workflow = 0;
 
-    this->setFrameStyle(QFrame::Panel | QFrame::Raised);
-    this->setLineWidth(2);
+    QVBoxLayout* layout = new QVBoxLayout;
+    this->board = new BoardFrame(HEIGHT, WIDTH);
+    layout->addWidget(this->board);
 
+    this->setFocusPolicy(Qt::StrongFocus);  // Respond to keyboard event
     this->setLayout(layout);
-    this->cells = vector< vector<Cell> >(20, vector<Cell>(10, Cell()));
-}
-
-void BoardWidget::paintEvent(QPaintEvent*)
-{
-    QPainter painter(this);
-
-    for(unsigned int i(0); i < this->cells.size(); ++i)
-    {
-        for(unsigned int j(0); j < this->cells.at(i).size(); ++j)
-        {
-            // Fill the rect if the cell is non empty
-            if(this->cells.at(i).at(j).isEmpty())
-                painter.fillRect(j * 10, i * 10, 10, 10, QColor(100, 100, 100));
-        }
-    }
 }
 
 void BoardWidget::connectWorkflow(Workflow* w)
 {
+    this->workflow = w;
     connect(w, SIGNAL(paintBoard(vector<vector<Cell> >)), this, SLOT(paintBoard(vector<vector<Cell> >)));
+}
+
+void BoardWidget::disconnectWorkflow()
+{
+    disconnect();
+    this->workflow = 0;
 }
 
 void BoardWidget::paintBoard(vector<vector<Cell> > c)
 {
-    this->cells = c;
-    this->repaint();
+    this->board->repaint(c);
+}
+
+void BoardWidget::keyPressEvent(QKeyEvent* event)
+{
+    if(NULL == this->workflow)
+        QWidget::keyPressEvent(event);
+    else
+    {
+        switch(event->key())
+        {
+        case Qt::Key_Down:
+                this->workflow->move(DOWN);
+                break;
+        case Qt::Key_Left:
+                this->workflow->move(LEFT);
+                break;
+        case Qt::Key_Right:
+                this->workflow->move(RIGHT);
+                break;
+        case Qt::Key_Up:
+                this->workflow->spin();
+                break;
+        case Qt::Key_Space:
+                this->workflow->drop();
+                break;
+        default:
+            QWidget::keyPressEvent(event);
+        }
+    }
+    event->accept();
 }

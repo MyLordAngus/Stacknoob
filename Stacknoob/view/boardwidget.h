@@ -3,33 +3,32 @@
 
 #include <vector>
 #include <QWidget>
-#include <QFrame>
 #include <QVBoxLayout>
-#include <QPainter>
+#include <QKeyEvent>
 
 #include "core/cell.h"
 #include "core/workflow.h"
+#include "boardframe.h"
 
 using namespace std;
 
-class BoardWidget : public QFrame
+class BoardWidget : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit BoardWidget(QFrame *parent = 0);
+    explicit BoardWidget(QWidget *parent = 0);
     void connectWorkflow(Workflow* w);
+
+private:
+    Workflow* workflow;
+    BoardFrame* board;
+
+    void keyPressEvent(QKeyEvent *);
 
 public slots:
     void paintBoard(vector<vector<Cell> >);
-
-private:
-    /// The vector of cells to be printed in the view
-    vector<vector<Cell> > cells;
-    virtual void paintEvent(QPaintEvent* event);
-
-signals:
-
+    void disconnectWorkflow();
 };
 
 #endif // BOARDWIDGET_H

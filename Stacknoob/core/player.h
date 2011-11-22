@@ -4,7 +4,6 @@
 #include <string>
 
 #include "board.h"
-#include "workflow.h"
 
 using namespace std;
 
@@ -13,14 +12,21 @@ class Player
 protected:
     string name;
     int score;
+    int level;
+    int lines;
     Board board;
-    Workflow workflow;
 
 public:
-    Player(string _name,int _score);
+    Player(string _name, int _score = 0, int _level = 1, int _lines = 0);
     void setBoard(Board _board);
+    int getScore() { return this->score; }
+    void setScore(int _score) { this->score = _score; }
+    int getLevel() { return this->level; }
+    void setLevel(int _level) { this->level = _level; }
+    int getlines() { return this->lines; }
+    void setLines(int _lines) { this->lines = _lines; }
+
     Board& getBoard();
-    Workflow& getWorkflow() { return this->workflow; }
 };
 
 #endif // PLAYER_H

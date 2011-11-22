@@ -20,7 +20,9 @@ SOURCES += main.cpp\
     core/piece.cpp \
     core/workflow.cpp \
     core/game.cpp \
-    view/boardwidget.cpp
+    view/boardwidget.cpp \
+    view/panelwidget.cpp \
+    view/boardframe.cpp
 
 HEADERS  += mainwindow.h \
     core/player.h \
@@ -31,7 +33,10 @@ HEADERS  += mainwindow.h \
     core/piece.h \
     core/workflow.h \
     core/game.h \
-    view/boardwidget.h
+    view/boardwidget.h \
+    constants.h \
+    view/panelwidget.h \
+    view/boardframe.h
 
 FORMS    += mainwindow.ui
 

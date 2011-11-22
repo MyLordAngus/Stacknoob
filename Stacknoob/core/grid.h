@@ -10,15 +10,16 @@ using namespace std;
 class Grid
 {
 protected:
-    int width;
-    int height;
     vector< vector<Cell> > cells;
+    int height;
+    int width;
 
 public:
     Grid();
+    Grid(int, int);
+    Grid(vector< vector<Cell> >&);
     vector< vector<Cell> >& getCells() { return this->cells; }
-    void setCells(vector< vector<Cell> >& c) { this->cells = c; }
-    Grid(int _width,int _height);
+    void setCells(vector< vector<Cell> > c) { this->cells = c; }
 };
 
 #endif // GRID_H
