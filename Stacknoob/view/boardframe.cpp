@@ -3,7 +3,7 @@
 BoardFrame::BoardFrame(int h, int w, QFrame *parent) :
     QFrame(parent), height(h), width(w)
 {
-    this->cells = vector< vector<Cell> >(height, vector<Cell>(width, Cell()));
+    this->cells = vector< vector<Cell>>(height, vector<Cell>(width, Cell()));
 }
 
 void BoardFrame::paintEvent(QPaintEvent*)
@@ -11,10 +11,10 @@ void BoardFrame::paintEvent(QPaintEvent*)
     QPainter painter(this);
     int i = 0, j = 0;
 
-    for(vector<vector<Cell> >::iterator it_i = this->cells.begin(); it_i != this->cells.end(); ++it_i)
+    for(auto it_i = this->cells.begin(); it_i != this->cells.end(); ++it_i)
     {
         i = distance(this->cells.begin(), it_i);
-        for(vector<Cell>::iterator it_j = it_i->begin(); it_j != it_i->end(); ++it_j)
+        for(auto it_j = it_i->begin(); it_j != it_i->end(); ++it_j)
         {
             // Fill the rect if the cell is non empty
             j = distance(it_i->begin(), it_j);

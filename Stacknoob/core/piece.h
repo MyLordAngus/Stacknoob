@@ -6,12 +6,12 @@
 
 using namespace std;
 
-enum pieceType {O ,I ,S ,Z ,L ,J ,T };
+enum class PieceType {O ,I ,S ,Z ,L ,J ,T };
 
 class Piece : public Grid
 {
 public:
-    Piece(vector<Grid> &, pieceType, int _x = 4, int _y = 0);
+    Piece(vector<Grid> &, PieceType, int _x = 4, int _y = 0);
 
     int getX() { return this->x; }
     void setX(int _x) { this->x = _x; }
@@ -32,7 +32,7 @@ protected:
     int x, y;
     vector<Grid> positions;
     vector<Grid>::iterator cur_position;
-    pieceType name;
+    PieceType name;
 };
 
 #endif // PIECE_H

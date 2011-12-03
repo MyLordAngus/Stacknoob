@@ -51,7 +51,7 @@ void PanelWidget::udpateNextPiece(vector<vector<Cell> > c)
     c.push_back(vector<Cell>(4, Cell()));
     c.push_back(vector<Cell>(4, Cell()));
 
-    for(vector<vector<Cell> >::iterator it = c.begin(); it != c.end(); ++it)
+    for(auto it = c.begin(); it != c.end(); ++it)
     {
         it->insert(it->begin(), Cell());
         it->push_back(Cell());

@@ -9,7 +9,7 @@ Piece* PieceFactory::initPiece()
 {
     int x = rand() % 7 + 1;
 
-    pieceType p_name;
+    PieceType p_name;
     vector<Grid> positions;
     vector< vector<Cell> > cur_pos;
     Cell cell;
@@ -20,7 +20,7 @@ Piece* PieceFactory::initPiece()
         case 1:
         {
             //O-Tetrimino
-            p_name = O;
+            p_name = PieceType::O;
             cell.setColor(YELLOW);
 
             Grid oPos1 = Grid(4,4);
@@ -37,7 +37,7 @@ Piece* PieceFactory::initPiece()
         case 2:
         {
             //I-Tetrimino
-            p_name = I;
+            p_name = PieceType::I;
             cell.setColor(CYAN);
 
             Grid iPos1 = Grid(4,4);
@@ -63,7 +63,7 @@ Piece* PieceFactory::initPiece()
         case 3:
         {
             //S-Tetrimino
-            p_name = S;
+            p_name = PieceType::S;
             cell.setColor(GREEN);
 
             Grid sPos1 = Grid(4,4);
@@ -89,7 +89,7 @@ Piece* PieceFactory::initPiece()
         case 4:
         {
             //Z-Tetrimino
-            p_name = Z;
+            p_name = PieceType::Z;
             cell.setColor(RED);
 
             Grid zPos1 = Grid(4,4);
@@ -115,7 +115,7 @@ Piece* PieceFactory::initPiece()
         case 5:
         {
             //L-Tetrimino
-            p_name = L;
+            p_name = PieceType::L;
             cell.setColor(ORANGE);
 
             Grid lPos1 = Grid(4,4);
@@ -159,7 +159,7 @@ Piece* PieceFactory::initPiece()
         case 6:
         {
             //J-Tetrimino
-            p_name = J;
+            p_name = PieceType::J;
             cell.setColor(BLUE);
 
             Grid jPos1 = Grid(4,4);
@@ -203,7 +203,7 @@ Piece* PieceFactory::initPiece()
         case 7:
         {
             //T-Tetrimino
-            p_name = T;
+            p_name = PieceType::T;
             cell.setColor(MAGENTA);
 
             Grid tPos1 = Grid(4,4);

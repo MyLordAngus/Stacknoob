@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-Board::Board() : Grid(WIDTH, HEIGHT), piece(0), next_piece(0)
+Board::Board() : Grid(WIDTH, HEIGHT), piece(nullptr), next_piece(nullptr)
 {
-    this->cells = vector< vector<Cell> >(this->height, vector<Cell>(this->width, Cell()));
+    this->cells = vector< vector<Cell>>(this->height, vector<Cell>(this->width, Cell()));
 }
 
 vector< vector<Cell> > Board::mergePieceInBoard()
@@ -21,9 +21,9 @@ vector< vector<Cell> > Board::mergePieceInBoard()
     Grid g = this->piece->getGrid();
     vector<vector<Cell> > vp = this->piece->getGrid().getCells();
 
-    for(it_i = vp.begin(); it_i != vp.end(); ++it_i)
+    for(auto it_i = vp.begin(); it_i != vp.end(); ++it_i)
     {
-        for(it_j = it_i->begin(); it_j != it_i->end(); ++it_j)
+        for(auto it_j = it_i->begin(); it_j != it_i->end(); ++it_j)
         {
             if(!it_j->isBlank())
             {
@@ -137,9 +137,9 @@ int Board::checkCollision(directionType _direction)
         case ROTATE: break;
     }
 
-    for(it_i = vp.begin(); it_i != vp.end(); ++it_i)
+    for(auto it_i = vp.begin(); it_i != vp.end(); ++it_i)
     {
-        for(it_j = it_i->begin(); it_j != it_i->end(); ++it_j)
+        for(auto it_j = it_i->begin(); it_j != it_i->end(); ++it_j)
         {
             if(it_j->isBlank())
                 continue;

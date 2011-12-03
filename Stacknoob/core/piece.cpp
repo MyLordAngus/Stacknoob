@@ -1,6 +1,6 @@
 #include "piece.h"
 
-Piece::Piece(vector<Grid> & p, pieceType n, int _x, int _y) : Grid(p[0].getCells()), x(_x), y(_y), positions(p), name(n)
+Piece::Piece(vector<Grid> & p, PieceType n, int _x, int _y) : Grid(p[0].getCells()), x(_x), y(_y), positions(p), name(n)
 {
     this->cur_position = this->positions.begin();
 }

@@ -118,7 +118,7 @@ int Workflow::fixPieceInBoard()
         this->board.setNextPiece(0);
         this->board.setPiece(0);
 
-        emit nextPiece(vector< vector<Cell> >(4, vector<Cell>(4, Cell())));     // delete next piece in view
+        emit nextPiece(vector< vector<Cell>>(4, vector<Cell>(4, Cell())));     // delete next piece in view
 
         for(int y = (this->board.getCells().size() - 1); y >= 0; y--){
             this->board.fillAllCells(y);
