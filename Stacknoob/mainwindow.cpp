@@ -27,6 +27,8 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete this->b_widget;
+    delete this->p_widget;
 }
 
 void MainWindow::connectWorkflow(Workflow* w)
@@ -36,6 +38,7 @@ void MainWindow::connectWorkflow(Workflow* w)
 
     connect(w, SIGNAL(endGame()), this, SLOT(disconnectWorkflow()));
 }
+
 void MainWindow::disconnectWorkflow()
 {
     this->b_widget->disconnectWorkflow();

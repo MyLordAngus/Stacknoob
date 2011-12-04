@@ -2,7 +2,7 @@
 
 Game::Game()
 {
-    Player* p = new Player("hello");
+    Player* p = new Player{ "hello" };
 
     this->initBoard(p);
     players.push_back(p);
@@ -10,9 +10,9 @@ Game::Game()
 
 Game::~Game()
 {
-    delete(this->workflow);
-    for(size_t i = 0; i < this->players.size(); i++)
-        delete(this->players[i]);
+    delete this->workflow;
+    for(Player* p : this->players)
+        delete p;
 }
 
 void Game::initBoard(Player* p)

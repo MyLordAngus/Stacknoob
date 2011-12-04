@@ -16,23 +16,23 @@ BoardWidget::BoardWidget(QWidget *parent) :
 void BoardWidget::connectWorkflow(Workflow* w)
 {
     this->workflow = w;
-    connect(w, SIGNAL(paintBoard(vector<vector<Cell> >)), this, SLOT(paintBoard(vector<vector<Cell> >)));
+    connect(w, SIGNAL(paintBoard(vector<vector<Cell>>)), this, SLOT(paintBoard(vector<vector<Cell>>)));
 }
 
 void BoardWidget::disconnectWorkflow()
 {
     disconnect();
-    this->workflow = 0;
+    this->workflow = nullptr;
 }
 
-void BoardWidget::paintBoard(vector<vector<Cell> > c)
+void BoardWidget::paintBoard(vector<vector<Cell>> c)
 {
     this->board->repaint(c);
 }
 
 void BoardWidget::keyPressEvent(QKeyEvent* event)
 {
-    if(NULL == this->workflow)
+    if(nullptr == this->workflow)
         QWidget::keyPressEvent(event);
     else
     {

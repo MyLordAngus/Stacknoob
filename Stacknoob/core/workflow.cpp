@@ -14,7 +14,7 @@ Workflow::Workflow(Player* p) : QObject()
 void Workflow::createPiece()
 {
     Piece* p = this->board.getNextPiece();
-    if(p == NULL)
+    if(p == nullptr)
         this->board.setPiece(PieceFactory::initPiece());
     else
         this->board.setPiece(this->board.getNextPiece());
@@ -27,7 +27,7 @@ void Workflow::createPiece()
 
 void Workflow::updateBoardView()
 {
-    vector<vector<Cell> > v = this->board.mergePieceInBoard();
+    auto v = this->board.mergePieceInBoard();
 
     emit paintBoard(v);
 }

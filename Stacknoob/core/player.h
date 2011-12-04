@@ -17,7 +17,7 @@ protected:
     Board board;
 
 public:
-    Player(string _name, int _score = 0, int _level = 1, int _lines = 0);
+    Player(string);
 
     void setBoard(Board _board);
     int getScore() { return this->score; }

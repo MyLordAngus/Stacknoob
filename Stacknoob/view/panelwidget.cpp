@@ -46,7 +46,7 @@ void PanelWidget::updateLines(int l)
     this->lines->setText("Lines : " + QString::number(l));
 }
 
-void PanelWidget::udpateNextPiece(vector<vector<Cell> > c)
+void PanelWidget::udpateNextPiece(vector<vector<Cell>> c)
 {
     c.push_back(vector<Cell>(4, Cell()));
     c.push_back(vector<Cell>(4, Cell()));

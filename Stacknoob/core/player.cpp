@@ -1,11 +1,11 @@
 #include "player.h"
 
-Player::Player(string _name, int _score, int _level, int _lines)
+Player::Player(string n) :
+    name(n),
+    score(0),
+    level(1),
+    lines(0)
 {
-    this->name = _name;
-    this->score = _score;
-    this->lines = _lines;
-    this->level = _level;
 }
 
 void Player::setBoard(Board _board)

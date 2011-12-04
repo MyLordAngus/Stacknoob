@@ -2,7 +2,10 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-Board::Board() : Grid(WIDTH, HEIGHT), piece(nullptr), next_piece(nullptr)
+Board::Board() :
+    Grid(WIDTH, HEIGHT),
+    piece(nullptr),
+    next_piece(nullptr)
 {
     this->cells = vector< vector<Cell>>(this->height, vector<Cell>(this->width, Cell()));
 }
@@ -17,9 +20,8 @@ vector< vector<Cell> > Board::mergePieceInBoard()
     int y = this->piece->getY();
     int coordX = 0, coordY = 0;
 
-    vector<vector<Cell> > v = this->getCells();
-    Grid g = this->piece->getGrid();
-    vector<vector<Cell> > vp = this->piece->getGrid().getCells();
+    vector<vector<Cell>> v = this->getCells();
+    vector<vector<Cell>> vp = this->piece->getGrid().getCells();
 
     for(auto it_i = vp.begin(); it_i != vp.end(); ++it_i)
     {
@@ -31,7 +33,7 @@ vector< vector<Cell> > Board::mergePieceInBoard()
                 coordY = distance(vp.begin(), it_i) + y - 3;
 
                 if(coordX >= 0 && coordX < this->width &&
-                        coordY >= 0 && coordY < this->height)
+                   coordY >= 0 && coordY < this->height)
                 {
                     v[coordY][coordX] = *it_j;
                 }
@@ -122,7 +124,7 @@ int Board::checkCollision(directionType _direction)
     int x = this->piece->getX();
     int y = this->piece->getY();
     int coordX = 0, coordY = 0;
-    vector<vector<Cell> > vp;
+    vector<vector<Cell>> vp;
 
     if(_direction == ROTATE)
         vp = this->piece->nextPosition()->getCells();

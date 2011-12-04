@@ -3,14 +3,10 @@
 
 #include <QColor>
 
-enum colorType { BLACK, CYAN ,YELLOW ,MAGENTA ,ORANGE ,BLUE ,GREEN ,RED };
+enum colorType { BLACK, CYAN, YELLOW, MAGENTA, ORANGE, BLUE, GREEN, RED };
 
 class Cell
 {
-protected:
-    colorType color;
-    bool is_blank;
-
 public:
     Cell();
     Cell(colorType, bool);
@@ -21,6 +17,10 @@ public:
 
     /// Return the QColor object to paint it on view
     QColor getQColor();
+
+protected:
+    colorType color;
+    bool is_blank;
 };
 
 #endif // CELL_H
