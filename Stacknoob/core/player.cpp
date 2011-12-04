@@ -8,7 +8,7 @@ Player::Player(string n) :
 {
 }
 
-void Player::setBoard(Board _board)
+void Player::setBoard(const Board& _board)
 {
     this->board = _board;
 }

@@ -19,7 +19,7 @@ protected:
 public:
     Player(string);
 
-    void setBoard(Board _board);
+    void setBoard(const Board&);
     int getScore() { return this->score; }
     void setScore(int _score) { this->score = _score; }
     int getLevel() { return this->level; }

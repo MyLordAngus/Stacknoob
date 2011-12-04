@@ -10,13 +10,17 @@ PanelWidget::PanelWidget(QWidget *parent) :
     this->next_piece = new BoardFrame(6, 6);
     this->layout.addWidget(next_piece);
 
+    QVBoxLayout* bottom_layout = new QVBoxLayout;
+
     this->level = new QLabel;
     this->level->setText("Level : 1");
-    this->layout.addWidget(level);
+    bottom_layout->addWidget(level);
 
     this->lines = new QLabel;
     this->lines->setText("Lines : 0");
-    this->layout.addWidget(lines);
+    bottom_layout->addWidget(lines);
+
+    this->layout.addLayout(bottom_layout);
 
     this->setLayout(&layout);
 }
