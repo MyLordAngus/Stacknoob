@@ -11,10 +11,11 @@ class Board : public Grid
 {
 public:
     Board();
+    ~Board();
 
-    void setPiece(Piece* p) { this->piece = p; }
+    void setPiece(Piece* const p) { if(this->piece != nullptr) delete this->piece; this->piece = p; }
     Piece* getPiece() { return this->piece; }
-    void setNextPiece(Piece* p) { this->next_piece = p; }
+    void setNextPiece(Piece* const p) { this->next_piece = p; }
     Piece* getNextPiece() { return this->next_piece; }
 
     /// Place the piece in a copy of grid with the right coordonate

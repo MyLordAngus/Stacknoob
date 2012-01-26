@@ -10,9 +10,18 @@ Board::Board() :
     this->cells = vector< vector<Cell>>(this->height, vector<Cell>(this->width, Cell()));
 }
 
+Board::~Board()
+{
+    if(this->piece != nullptr)
+        delete this->piece;
+
+    if(this->next_piece != nullptr)
+        delete this->next_piece;
+}
+
 vector< vector<Cell> > Board::mergePieceInBoard()
 {
-    if(this->piece == NULL){
+    if(this->piece == nullptr){
         return this->cells;
     }
 
