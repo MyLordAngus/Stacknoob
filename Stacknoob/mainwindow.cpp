@@ -31,7 +31,7 @@ MainWindow::~MainWindow()
     delete this->p_widget;
 }
 
-void MainWindow::connectWorkflow(Workflow* w)
+void MainWindow::connectWorkflow(Workflow * w)
 {
     this->b_widget->connectWorkflow(w);
     this->p_widget->connectWorkflow(w);

@@ -15,7 +15,7 @@ class PanelWidget : public QWidget
 
 public:
     explicit PanelWidget(QWidget *parent = 0);
-    void connectWorkflow(Workflow* w);
+    void connectWorkflow(Workflow*);
 
 private:
     Workflow* workflow;
@@ -30,7 +30,7 @@ public slots:
     void updateScore(int);
     void updateLevel(int);
     void updateLines(int);
-    void udpateNextPiece(vector<vector<Cell> >);
+    void udpateNextPiece(vector<vector<Cell> > &);
 };
 
 #endif // PANELWIDGET_H

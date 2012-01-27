@@ -13,10 +13,10 @@ BoardWidget::BoardWidget(QWidget *parent) :
     this->setLayout(layout);
 }
 
-void BoardWidget::connectWorkflow(Workflow* w)
+void BoardWidget::connectWorkflow(Workflow * w)
 {
     this->workflow = w;
-    connect(w, SIGNAL(paintBoard(vector<vector<Cell>>)), this, SLOT(paintBoard(vector<vector<Cell>>)));
+    connect(w, SIGNAL(paintBoard(vector<vector<Cell>> &)), this, SLOT(paintBoard(vector<vector<Cell>> &)));
 }
 
 void BoardWidget::disconnectWorkflow()
@@ -25,7 +25,7 @@ void BoardWidget::disconnectWorkflow()
     this->workflow = nullptr;
 }
 
-void BoardWidget::paintBoard(vector<vector<Cell>> c)
+void BoardWidget::paintBoard(vector<vector<Cell>> & c)
 {
     this->board->repaint(c);
 }

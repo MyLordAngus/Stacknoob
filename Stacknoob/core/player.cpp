@@ -8,9 +8,9 @@ Player::Player(string n) :
 {
 }
 
-void Player::setBoard(const Board& _board)
+void Player::setBoard(Board const & b)
 {
-    this->board = _board;
+    this->board = b;
 }
 
 Board& Player::getBoard()

@@ -19,13 +19,13 @@ protected:
 public:
     Player(string);
 
-    void setBoard(const Board&);
+    void setBoard(Board const &);
     int getScore() { return this->score; }
-    void setScore(int _score) { this->score = _score; }
+    void setScore(int s) { this->score = s; }
     int getLevel() { return this->level; }
-    void setLevel(int _level) { this->level = _level; }
+    void setLevel(int l) { this->level = l; }
     int getlines() { return this->lines; }
-    void setLines(int _lines) { this->lines = _lines; }
+    void setLines(int l) { this->lines = l; }
 
     Board& getBoard();
 };

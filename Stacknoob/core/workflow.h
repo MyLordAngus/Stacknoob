@@ -14,7 +14,7 @@ class Workflow : public QObject
 
 public:
     Workflow();
-    Workflow(Player*);
+    Workflow(Player const &);
 
     /// Repaint the board widget
     void updateBoardView();
@@ -40,11 +40,12 @@ public slots:
     void timeoutView();
 
 signals:
-    void paintBoard(vector<vector<Cell> >);
+    void paintBoard(vector<vector<Cell> >&);
     void updateScore(int);
     void updateLevel(int);
     void updateLines(int);
-    void nextPiece(vector<vector<Cell> >);
+    void nextPiece(vector<vector<Cell> > &);    // lvalue ref
+    void nextPiece(vector<vector<Cell> > &&);   // rvalue ref
     void endGame();
 };
 

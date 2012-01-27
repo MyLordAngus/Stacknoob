@@ -5,16 +5,15 @@ Workflow::Workflow() : QObject()
 {
 }
 
-Workflow::Workflow(Player* p) : QObject()
+Workflow::Workflow(Player const & p) : QObject()
 {
-    this->player = p;
-    this->board = p->getBoard();
+    this->player = const_cast<Player*>(&p);
+    this->board = this->player->getBoard();
 }
 
 void Workflow::createPiece()
 {
-    Piece* p = this->board.getNextPiece();
-    if(p == nullptr)
+    if(this->board.getNextPiece() == nullptr)
         this->board.setPiece(PieceFactory::initPiece());
     else
         this->board.setPiece(this->board.getNextPiece());

@@ -19,7 +19,7 @@ public:
     ~MainWindow();
 
     /// Add workflow ref to widget emit signals
-    void connectWorkflow(Workflow*);
+    void connectWorkflow(Workflow *);
 
 private:
     Ui::MainWindow *ui;

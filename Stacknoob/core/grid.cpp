@@ -4,7 +4,7 @@ Grid::Grid()
 {
 }
 
-Grid::Grid(vector< vector<Cell> >& c) : cells(c), height(c.size()), width(c[0].size())
+Grid::Grid(vector<vector<Cell> > const & c) : cells(c), height(c.size()), width(c[0].size())
 {
 }
 

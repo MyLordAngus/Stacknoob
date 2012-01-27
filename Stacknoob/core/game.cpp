@@ -17,7 +17,7 @@ Game::~Game()
 
 void Game::initBoard(Player* p)
 {
-    this->workflow = new Workflow(p);
+    this->workflow = new Workflow(*p);
     p->setBoard(Board());
 }
 

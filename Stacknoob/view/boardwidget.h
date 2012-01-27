@@ -18,7 +18,7 @@ class BoardWidget : public QWidget
 
 public:
     explicit BoardWidget(QWidget *parent = 0);
-    void connectWorkflow(Workflow* w);
+    void connectWorkflow(Workflow *);
 
 private:
     Workflow* workflow;
@@ -27,7 +27,7 @@ private:
     void keyPressEvent(QKeyEvent *);
 
 public slots:
-    void paintBoard(vector<vector<Cell> >);
+    void paintBoard(vector<vector<Cell> > &);
     void disconnectWorkflow();
 };
 
